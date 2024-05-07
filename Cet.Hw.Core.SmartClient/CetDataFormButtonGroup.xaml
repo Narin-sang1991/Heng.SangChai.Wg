@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="Cet.Hw.Core.SmartClient.CetDataFormButtonGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns:controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" x:Name="ctlCetDataFormButton">
+    <StackPanel Orientation="{Binding ElementName=ctlCetDataFormButton,Path=StackLayOutButton}" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <telerik:RadButton CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                        RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetDataFormButtonGroup,Path=ShowCommitButtons}"
+                        Command="{x:Static controls:RadDataFormCommands.CommitEdit}">
+                <!--<ToolTipService.ToolTip>
+                            <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_AddNew"/>
+                        </ToolTipService.ToolTip>-->
+                <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Save-Bt.png" />
+            </telerik:RadButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <telerik:RadButton x:Name="Cancel" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                        RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetDataFormButton,Path=ShowCommitButtons}"
+                        Command="{x:Static controls:RadDataFormCommands.CancelEdit}">
+                <!--<ToolTipService.ToolTip>
+                            <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_AddNew"/>
+                        </ToolTipService.ToolTip>-->
+                <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Cancel-Bt.png" />
+            </telerik:RadButton>
+        </StackPanel>
+        <StackPanel Orientation="{Binding ElementName=ctlCetDataFormButton,Path=StackLayOutButton}" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Separator Margin="2"/>
+            <telerik:RadButton x:Name="AddNew" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}"
+                            Style="{StaticResource EditorButtonStyle}" RenderTransformOrigin="0.5,0.5"
+                            Visibility="{Binding ElementName=ctlCetDataFormButton,Path=ShowAddButton}"
+                            Command="{x:Static controls:RadDataFormCommands.AddNew}" >
+                <ToolTipService.ToolTip>
+                    <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_AddNew"/>
+                </ToolTipService.ToolTip>
+                <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Add-Bt.png" />
+            </telerik:RadButton>
+            <telerik:RadButton x:Name="BeginEdit" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                            RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetDataFormButton,Path=ShowEditButton}"
+                            Command="{x:Static controls:RadDataFormCommands.BeginEdit}">
+                <ToolTipService.ToolTip>
+                    <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_BeginEdit"/>
+                </ToolTipService.ToolTip>
+                <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Edit-Bt.png" />
+            </telerik:RadButton>
+            <telerik:RadButton x:Name="Delete" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                            RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetDataFormButton,Path=ShowDeleteButton}"
+                            Command="{x:Static controls:RadDataFormCommands.Delete}">
+                <ToolTipService.ToolTip>
+                    <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_Delete"/>
+                </ToolTipService.ToolTip>
+                <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Del-Bt.png" />
+            </telerik:RadButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="{Binding ElementName=ctlCetDataFormButton,Path=ShowNavigationButtons}">
+            <Separator Margin="2"/>
+            <telerik:RadButton x:Name="MoveCurrentToFirst"
+                            Style="{StaticResource EditorButtonStyle}"
+                            RenderTransformOrigin="0.5,0.5" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}"
+                            Command="{x:Static controls:RadDataFormCommands.MoveCurrentToFirst}">
+                <ToolTipService.ToolTip>
+                    <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_MoveCurrentToFirst"/>
+                </ToolTipService.ToolTip>
+                <Path
+                                Data="M5,0.50000024 L5,7.5 L1,4 z M0,0 L1,0 L1,4 L1,8 L0,8 z"
+                                Fill="{telerik:Windows8Resource ResourceKey=MarkerBrush}"
+                                Stretch="Fill"
+                                RenderTransformOrigin="0.5,0.5"
+                                Width="10"
+                                Height="15">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+            </telerik:RadButton>
+            <telerik:RadButton x:Name="MoveCurrentToPrevious"
+                            Style="{StaticResource EditorButtonStyle}"
+                            RenderTransformOrigin="0.5,0.5" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}"
+                            Command="{x:Static controls:RadDataFormCommands.MoveCurrentToPrevious}">
+                <ToolTipService.ToolTip>
+                    <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_MoveCurrentToPrevious"/>
+                </ToolTipService.ToolTip>
+                <Path Fill="{telerik:Windows8Resource ResourceKey=MarkerBrush}" Stretch="Fill" Data="M0,0 L7,0 L3.4999998,4 z" RenderTransformOrigin="0.5,0.5" Width="12" Height="9">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+            </telerik:RadButton>
+            <telerik:RadButton x:Name="MoveCurrentToNext"
+                            Style="{StaticResource EditorButtonStyle}"
+                            RenderTransformOrigin="0.5,0.5" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}"
+                            Command="{x:Static controls:RadDataFormCommands.MoveCurrentToNext}">
+                <ToolTipService.ToolTip>
+                    <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_MoveCurrentToNext"/>
+                </ToolTipService.ToolTip>
+                <Path Fill="{telerik:Windows8Resource ResourceKey=MarkerBrush}" Stretch="Fill" Data="M0,0 L7,0 L3.4999998,4 z" RenderTransformOrigin="0.5,0.5" Width="12" Height="9">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <telerik:RadButton.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </telerik:RadButton.RenderTransform>
+            </telerik:RadButton>
+            <telerik:RadButton x:Name="MoveCurrentToLast"
+                            Style="{StaticResource EditorButtonStyle}"
+                            RenderTransformOrigin="0.5,0.5" CommandTarget="{Binding ElementName=ctlCetDataFormButton,Path=CommandTarget}"
+                            Command="{x:Static controls:RadDataFormCommands.MoveCurrentToLast}">
+                <ToolTipService.ToolTip>
+                    <ToolTip telerik:LocalizationManager.ResourceKey="DataForm_MoveCurrentToLast"/>
+                </ToolTipService.ToolTip>
+                <Path
+                                Data="M5,0.50000024 L5,7.5 L1,4 z M0,0 L1,0 L1,4 L1,8 L0,8 z"
+                                Fill="{telerik:Windows8Resource ResourceKey=MarkerBrush}"
+                                Stretch="Fill"
+                                RenderTransformOrigin="0.5,0.5"
+                                Width="10"
+                                Height="15">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <telerik:RadButton.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </telerik:RadButton.RenderTransform>
+            </telerik:RadButton>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

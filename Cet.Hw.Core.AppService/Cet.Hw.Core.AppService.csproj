@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E262CE8D-5FF3-4CE7-87AA-B3DA4AAF0150}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cet.Hw.Core.AppService</RootNamespace>
+    <AssemblyName>Cet.Hw.Core.AppService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\References\EntityFramework6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\References\EntityFramework6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\EntLib5\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="PrismWeb">
+      <HintPath>..\References\PrismWeb\PrismWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="PrismWebUnityExtensions">
+      <HintPath>..\References\PrismWeb\PrismWebUnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CoreModule.cs" />
+    <Compile Include="FileUploadService.cs" />
+    <Compile Include="FormAuthenticationService.cs" />
+    <Compile Include="MenuService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cet.Core.Utility\Cet.Core.Utility.csproj">
+      <Project>{9346bbd1-7bc7-47c6-b747-b4a147901b6f}</Project>
+      <Name>Cet.Core.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Core\Cet.Core.csproj">
+      <Project>{3a9f6890-3d54-49e8-9482-af67786c0da8}</Project>
+      <Name>Cet.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.EntityFramework.Adaptor\Cet.EntityFramework.Adaptor.csproj">
+      <Project>{b3acabb4-7a6b-451d-b8c4-b446be54da57}</Project>
+      <Name>Cet.EntityFramework.Adaptor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Hw.Core.AppServiceContract\Cet.Hw.Core.AppServiceContract.csproj">
+      <Project>{3f05c693-1ae0-4f4c-80c8-efd3f3940dac}</Project>
+      <Name>Cet.Hw.Core.AppServiceContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Hw.Core.Domain\Cet.Hw.Core.Domain.csproj">
+      <Project>{dc70cb6e-094d-4a81-b383-eba08bfa82c3}</Project>
+      <Name>Cet.Hw.Core.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Hw.Core\Cet.Hw.Core.csproj">
+      <Project>{9FB76912-0215-4BB2-ACBB-D62E84C7CA54}</Project>
+      <Name>Cet.Hw.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

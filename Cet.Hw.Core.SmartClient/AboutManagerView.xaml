@@ -1,0 +1,19 @@
+﻿<Window x:Class="Cet.Hw.Core.SmartClient.AboutManagerView"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About"  Height="300" Width="317"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:Engine="clr-namespace:WPFLocalizeExtension.Engine;assembly=WPFLocalizeExtension" 
+        Engine:LocalizeDictionary.DesignCulture="en-GB"
+        xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
+        mc:Ignorable="d" WindowStyle="None"
+        d:DesignHeight="180" d:DesignWidth="350" Background="White" WindowStartupLocation="CenterScreen" 
+        MaxHeight="180" MinHeight="180" MaxWidth="350" MinWidth="350">
+    <DockPanel Style="{StaticResource AboutBackgroundStyle}">
+        <telerik:RadButton Name="button1" Style="{StaticResource OKButtonStyle}" Content="OK" Margin="5" DockPanel.Dock="Bottom" HorizontalAlignment="Center"   Click="ctlOK_Click" />
+        <ContentControl Content="{Binding}"/>
+    </DockPanel>
+</Window>
+

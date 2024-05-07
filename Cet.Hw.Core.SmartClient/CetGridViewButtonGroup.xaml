@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Cet.Hw.Core.SmartClient.CetGridViewButtonGroup"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" mc:Ignorable="d"
+             xmlns:smartClient="clr-namespace:Cet.SmartClient.Client;assembly=Cet.SmartClient.Client"
+             xmlns:lex="http://schemas.root-project.org/xaml/presentation"
+             x:Name="ctlCetGridViewButton"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Orientation="Horizontal">
+        <telerik:RadButton Name="ctOK" HorizontalAlignment="Center" CommandTarget="{Binding ElementName=ctlCetGridViewButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                         RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetGridViewButton,Path=ShowCommitButtons}"
+                         Command="telerik:RadGridViewCommands.CommitEdit">
+            <ToolTipService.ToolTip>
+                <ToolTip Content="{lex:LocText Cet.SmartClient.Client:Messages:OK_BUTTON}"/>
+            </ToolTipService.ToolTip>
+            <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Save-Bt.png" />
+        </telerik:RadButton>
+        <telerik:RadButton Name="ctCancel" HorizontalAlignment="Center" CommandTarget="{Binding ElementName=ctlCetGridViewButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                         RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetGridViewButton,Path=ShowCommitButtons}"
+                         Command="telerik:RadGridViewCommands.CancelRowEdit">
+            <ToolTipService.ToolTip>
+                <ToolTip Content="{lex:LocText Cet.SmartClient.Client:Messages:CANCEL_BUTTON}"/>
+            </ToolTipService.ToolTip>
+            <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Cancel-Bt.png" />
+        </telerik:RadButton>
+        <Separator Margin="2" />
+        <telerik:RadButton Name="ctAdd" HorizontalAlignment="Center" CommandTarget="{Binding ElementName=ctlCetGridViewButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                         RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetGridViewButton,Path=ShowAddButton}"
+                         Command="telerik:RadGridViewCommands.BeginInsert">
+            <ToolTipService.ToolTip>
+                <ToolTip Content="{lex:LocText Cet.SmartClient.Client:Messages:ADD_BUTTON}"/>
+            </ToolTipService.ToolTip>
+            <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Add-Bt.png" />
+        </telerik:RadButton>
+        <telerik:RadButton Name="ctEdit" HorizontalAlignment="Center" CommandTarget="{Binding ElementName=ctlCetGridViewButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                         RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetGridViewButton,Path=ShowEditButton}"
+                         Command="telerik:RadGridViewCommands.BeginEdit">
+            <ToolTipService.ToolTip>
+                <ToolTip Content="{lex:LocText Cet.SmartClient.Client:Messages:EDIT_BUTTON}"/>
+            </ToolTipService.ToolTip>
+            <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Edit-Bt.png" />
+        </telerik:RadButton>
+        <telerik:RadButton Name="ctlDelete" HorizontalAlignment="Center" CommandTarget="{Binding ElementName=ctlCetGridViewButton,Path=CommandTarget}" Style="{StaticResource EditorButtonStyle}"
+                         RenderTransformOrigin="0.5,0.5" Visibility="{Binding ElementName=ctlCetGridViewButton,Path=ShowDeleteButton}"
+                         Command="telerik:RadGridViewCommands.Delete">
+            <ToolTipService.ToolTip>
+                <ToolTip Content="{lex:LocText Cet.SmartClient.Client:Messages:REMOVE_BUTTON}"/>
+            </ToolTipService.ToolTip>
+            <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Del-Bt.png" />
+        </telerik:RadButton>
+        <Separator Margin="2" />
+        <StackPanel Orientation="Horizontal">
+            <telerik:RadButton Name="ctlSearch" HorizontalAlignment="Center" Command="{Binding SearchCommand}"
+                               Style="{StaticResource SearchButtonStyle}" Visibility="{Binding ElementName=ctlCetGridViewButton,Path=ShowSearchButton}"/>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <telerik:RadButton Name="ctlSearchAsync" HorizontalAlignment="Center" Command="{Binding SearchAsyncCommand}" Style="{StaticResource ReloadButtonStyle}" Visibility="{Binding ElementName=ctlCetGridViewButton,Path=ShowSearchAsyncButton}"/>
+
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

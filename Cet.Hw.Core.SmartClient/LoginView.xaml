@@ -1,0 +1,65 @@
+﻿<Window x:Class="Cet.Hw.Core.SmartClient.LoginView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:res="clr-namespace:Cet.Hw.Core.SmartClient.Resources;assembly=Cet.Hw.Core.SmartClient"
+        xmlns:Engine="clr-namespace:WPFLocalizeExtension.Engine;assembly=WPFLocalizeExtension" 
+        Engine:LocalizeDictionary.DesignCulture="en-GB"
+        xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
+        xmlns:smartClient="clr-namespace:Cet.SmartClient.Client;assembly=Cet.SmartClient.Client"
+        mc:Ignorable="d" WindowStyle="None" 
+        Style="{StaticResource CetLoginWindowsStyle}" Background="WhiteSmoke" Title="Login" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <Viewbox Height="100" Width="Auto" DockPanel.Dock="Top">
+            <Image HorizontalAlignment="Center" Name="image1" Source="{Binding OULogoURL}" />
+        </Viewbox>
+        <smartClient:CetDataForm LabelStyle="{StaticResource RadDataFormLabelStyle}" Name="ctlLoginForm" CommandButtonsVisibility="None" DataContext="{Binding}"  AutoGenerateFields="False"
+            CommitButtonStyle="{StaticResource OKButtonStyle}" CancelButtonStyle="{StaticResource CancelButtonStyle}"  AutoCommit="False"                
+            CurrentItem="{Binding}" CurrentItemChanged="ctlLoginForm_CurrentItemChanged" EditEnded="ctlLoginForm_EditEnded" >
+            <telerik:RadDataForm.EditTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <!--<telerik:DataFormComboBoxField Name="ctlOU" Label="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:OU}" ItemsSource="{Binding OUList}" DisplayMemberPath="Name" DataMemberBinding="{Binding SelectedOU, UpdateSourceTrigger=PropertyChanged}" />-->
+                        <telerik:DataFormDataField Name="ctlLogin" Label="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:LOGIN}" DataMemberBinding="{Binding Code, Mode=TwoWay}">
+                            <telerik:DataFormDataField.Content>
+                                <TextBox Text="{Binding LoginName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MinHeight="30" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center"  />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormDataField Name="ctlPassword" Label="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:PASSWORD}" >
+                            <telerik:DataFormDataField.Content>
+                                <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" FontWeight="Bold" FontSize="20" MinHeight="30" VerticalContentAlignment="Center" />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <telerik:RadButton Name="ctlOK" Content="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:OK_BUTTON}" MinWidth="60" Height="25" Click="ctlOK_Click" Margin="5" IsDefault="True" />
+                            <telerik:RadButton Name="ctlCancel" Content="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:CANCEL_BUTTON}" MinWidth="60" Height="25" Click="ctlCancel_Click" Margin="5" IsCancel="True" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.EditTemplate>
+            <telerik:RadDataForm.ReadOnlyTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <!--<telerik:DataFormComboBoxField Name="ctlOU" Label="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:OU}" ItemsSource="{Binding OUList}" DisplayMemberPath="Name" DataMemberBinding="{Binding SelectedOU, UpdateSourceTrigger=PropertyChanged}" />-->
+                        <telerik:DataFormDataField Name="ctlLogin" Label="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:LOGIN}" DataMemberBinding="{Binding Code, Mode=TwoWay}">
+                            <telerik:DataFormDataField.Content>
+                                <TextBox Text="{Binding LoginName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MinHeight="30" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center"  />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormDataField Name="ctlPassword" Label="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:PASSWORD}" >
+                            <telerik:DataFormDataField.Content>
+                                <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" FontWeight="Bold" FontSize="20" MinHeight="30" VerticalContentAlignment="Center" />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <telerik:RadButton Name="ctlOK" Content="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:OK_BUTTON}" MinWidth="60" Height="25" Click="ctlOK_Click" Margin="5" IsDefault="True" />
+                            <telerik:RadButton Name="ctlCancel" Content="{lex:LocText Cet.Hw.Core.SmartClient:LoginView:CANCEL_BUTTON}" MinWidth="60" Height="25" Click="ctlCancel_Click" Margin="5" IsCancel="True" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.ReadOnlyTemplate>
+        </smartClient:CetDataForm>
+    </DockPanel>
+</Window>

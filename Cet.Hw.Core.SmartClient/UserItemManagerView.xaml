@@ -1,0 +1,105 @@
+﻿<smartClient:InlineEditSearchViewBase x:Class="Cet.Hw.Core.SmartClient.UserItemManagerView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+     mc:Ignorable="d"
+     xmlns:smartClient="clr-namespace:Cet.SmartClient.Client;assembly=Cet.SmartClient.Client"
+     xmlns:coreControls="clr-namespace:Cet.Hw.Core.SmartClient"
+     xmlns:localVM="clr-namespace:Cet.Hw.Core.SmartClient.ViewModels" 
+     xmlns:lex="http://schemas.root-project.org/xaml/presentation">
+    <ContentControl Style="{StaticResource SearchViewBaseStyle}">
+        <DockPanel>
+            <ContentControl DockPanel.Dock="Top" Style="{StaticResource SearchAreaStyle}">
+                <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Margin="0,0,0,10" >
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:Name}" Margin="20,0,0,0" />
+                        <TextBox Text="{Binding SearchCriteria.Name, Mode=TwoWay}" Width="120" />
+                        <Label Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:IsActive}" Margin="20,0,0,0" />
+                        <telerik:RadComboBox Width="120" SelectedValuePath="Tag" SelectedItem="0" SelectedValue="{Binding SearchCriteria.IsActive, Mode=TwoWay}">
+                            <telerik:RadComboBoxItem Tag="True" Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:True}" />
+                            <telerik:RadComboBoxItem Tag="False" Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:False}" />
+                        </telerik:RadComboBox>
+                    </StackPanel>
+                </WrapPanel>
+            </ContentControl>
+            <ContentControl DockPanel.Dock="Top" Style="{StaticResource SearchResultAreaStyle}">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                        <coreControls:CetGridViewButtonGroup CommandTarget="{Binding ElementName=ctlUserItemEditorResultGridView}"/>
+                        <telerik:RadButton  Command="{Binding ClearCriteriaCommand}" Style="{StaticResource ClearCriteriaButtonStyle}" />
+                    </StackPanel>
+                    <telerik:RadDataPager x:Name="ctlScopeGridViewDataPager" PageSize="{Binding PageSize, Mode=TwoWay}"
+                         PageIndex="{Binding PageIndex, Mode=TwoWay}" ItemCount="{Binding ItemCount, Mode=TwoWay}"
+                         DisplayMode="First, Last, Next, Previous, Text" IsTotalItemCountFixed="True" DockPanel.Dock="Bottom" />
+                    <telerik:RadGridView CopyingCellClipboardContent="OnCopyingCellClipboardContent" Name="ctlUserItemEditorResultGridView" RowEditEnded="OnRowEditEnded"
+                         ItemsSource="{Binding SearchResultCollectionView}" SelectionChanged="OnSelectionChanged"  SelectionChanging="OnSelectionChanging"
+                         DataContext="{Binding}" Deleting="OnDeletingAsync" CanUserDeleteRows="True" SelectionMode="Extended"      
+                         RowValidating="OnRowValidating" CanUserInsertRows="True" 
+                         AddingNewDataItem="OnAddingNewDataItem" Sorting="OnSortingAsync">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewSelectColumn />
+
+                            <telerik:GridViewDataColumn Header="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:Name}"  MinWidth="150"
+                                 DataMemberBinding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}"
+                                 SortMemberPath="Name" IsCustomSortingEnabled="True" HeaderTextAlignment="Center" TextAlignment="Left"/>
+
+                            <telerik:GridViewDataColumn Header="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:Login}"  MinWidth="150"
+                                 DataMemberBinding="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}"
+                                 SortMemberPath="Login" IsCustomSortingEnabled="True" HeaderTextAlignment="Center" TextAlignment="Left"/>
+
+                            <telerik:GridViewDataColumn Header="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:Password}" Width="150"  IsCustomSortingEnabled="False" HeaderTextAlignment="Center" 
+                                 TextAlignment="Left" >
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="********" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <PasswordBox Name="pwdBox" PasswordChanged="PasswordBox_PasswordChanged"  Margin="5" />
+                                        <!--<PasswordBox x:Name="txtPassword" Margin="5">
+                                            <PasswordBox.DataContext>
+                                                <Binding Path="Password" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" />
+                                            </PasswordBox.DataContext>
+                                        </PasswordBox>-->
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+
+                            <telerik:GridViewDataColumn Header="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:IsActive}" Width="80" SortMemberPath="IsCorporation" IsCustomSortingEnabled="True" HeaderTextAlignment="Center" 
+                                 TextAlignment="Left" >
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadComboBox Margin="3" SelectedValuePath="Tag"  IsEnabled="False" SelectedValue="{Binding IsActive, Mode=TwoWay}">
+                                            <telerik:RadComboBoxItem Tag="True" Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:True}" />
+                                            <telerik:RadComboBoxItem Tag="False" Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:False}" />
+                                        </telerik:RadComboBox>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadComboBox Margin="3" SelectedValuePath="Tag" SelectedItem="0" SelectedValue="{Binding IsActive, Mode=TwoWay}">
+                                            <telerik:RadComboBoxItem Tag="True" Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:True}" />
+                                            <telerik:RadComboBoxItem Tag="False" Content="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:False}" />
+                                        </telerik:RadComboBox>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+
+                            <telerik:GridViewDataColumn Header="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:CreatedDate}"  MinWidth="80"
+                                 DataMemberBinding="{Binding CreatedDate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat='{}{0:dd/MM/yyyy, HH:mm:ss}'}"
+                                 SortMemberPath="MustData.CreatedDate" IsReadOnly="True" IsCustomSortingEnabled="True" HeaderTextAlignment="Center" TextAlignment="Left"/>
+
+                            <telerik:GridViewDataColumn Header="{lex:LocText Cet.Hw.Core.SmartClient:UserItemSearchView:UpdatedDate}"  MinWidth="80"
+                                 DataMemberBinding="{Binding UpdatedDate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat='{}{0:dd/MM/yyyy, HH:mm:ss}'}"
+                                 SortMemberPath="MustData.UpdatedDate"  IsCustomSortingEnabled="True" HeaderTextAlignment="Center" TextAlignment="Left"/>
+
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </DockPanel>
+            </ContentControl>
+        </DockPanel>
+    </ContentControl>
+</smartClient:InlineEditSearchViewBase>
