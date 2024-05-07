@@ -1,0 +1,950 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                    xmlns:Engine="clr-namespace:WPFLocalizeExtension.Engine;assembly=WPFLocalizeExtension"
+                    xmlns:cet="clr-namespace:Cet.SmartClient.Client;assembly=Cet.SmartClient.Client"
+                    xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
+                    xmlns:smartClient="clr-namespace:Cet.SmartClient.Client;assembly=Cet.SmartClient.Client"
+                    xmlns:Telerik_Windows_Controls_Data_DataPager="clr-namespace:Telerik.Windows.Controls.Data.DataPager;assembly=Telerik.Windows.Controls.Data">
+
+    <smartClient:StringConverter x:Key="StringConverter"/>
+    <smartClient:CultureInfoSource x:Key="resCultureInfoSource"/>
+    <smartClient:CheckStateConverter x:Key="CheckStateConverter"/>
+    <smartClient:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    <smartClient:ActiveConverter x:Key="ActiveConverter"/>
+
+    <Style TargetType="Window" x:Key="CetLoginWindowsStyle">
+        <Setter Property="MaxHeight" Value="249"/>
+        <Setter Property="MinHeight" Value="249"/>
+        <Setter Property="MaxWidth" Value="380"/>
+        <Setter Property="MinWidth" Value="380"/>
+    </Style>
+
+    <Style TargetType="telerik:RadTabControl" BasedOn="{StaticResource RadTabControlStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="IsContentPreserved" Value="True"/>
+    </Style>
+    <Style TargetType="telerik:RadDocumentPane" BasedOn="{StaticResource RadPaneStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Header" Value="{Binding Header, Mode=TwoWay, Converter={StaticResource StringConverter}}" />
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=DataContext.NeedMainScrollViewer}" Value="True">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+                                                <Label Content="teststeretrleklf"/>
+                                                <ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}" />
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+
+                    <ContentPresenter Content="{TemplateBinding Content}" />
+
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="telerik:RadGridView" BasedOn="{StaticResource RadGridViewStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="ShowGroupPanel" Value="False"/>
+        <Setter Property="RowIndicatorVisibility" Value="Collapsed"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="CanUserDeleteRows" Value="False" />
+        <Setter Property="CanUserFreezeColumns" Value="False" />
+        <Setter Property="ValidatesOnDataErrors" Value="InEditMode"/>
+        <Setter Property="NewRowPosition" Value="None"/>
+        <Setter Property="ActionOnLostFocus" Value="None"/>
+        <Setter Property="IsLocalizationLanguageRespected" Value="False"/>
+        <Setter Property="SelectionUnit" Value="FullRow"/>
+    </Style>
+
+    <Style TargetType="telerik:RadDatePicker" BasedOn="{StaticResource RadDateTimePickerStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Width" Value="125"/>
+    </Style>
+
+
+    <Style TargetType="telerik:DataFormDateField">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+    </Style>
+
+    <Style x:Key="DocDetail" TargetType="telerik:DataFormDataField" >
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="telerik:RadDataPager" BasedOn="{StaticResource RadDataPagerStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type telerik:RadDataPager}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Telerik_Windows_Controls_Data_DataPager:DataPagerPresenter AutoEllipsisMode="{TemplateBinding AutoEllipsisMode}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" DisplayMode="{TemplateBinding DisplayMode}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" ItemCount="{Binding ItemCount, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" NumericButtonStyle="{TemplateBinding NumericButtonStyle}" NumericButtonCount="{TemplateBinding NumericButtonCount}" PageCount="{TemplateBinding PageCount}" PageSize="{Binding PageSize, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" PageIndex="{TemplateBinding PageIndex}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <telerik:StyleManager.Theme>
+                                <telerik:Windows8Theme/>
+                            </telerik:StyleManager.Theme>
+                        </Telerik_Windows_Controls_Data_DataPager:DataPagerPresenter>
+                        <telerik:RadComboBox Grid.Column="1" telerik:StyleManager.Theme="Windows8" BorderThickness="0" SelectedValuePath="Tag" SelectedValue="{Binding PageSize, Mode=TwoWay}">
+                            <telerik:RadComboBoxItem Content="5" Tag="5" />
+                            <telerik:RadComboBoxItem Content="15" Tag="15" />
+                            <telerik:RadComboBoxItem Content="10" Tag="10" />
+                            <telerik:RadComboBoxItem Content="20" Tag="20"/>
+                            <telerik:RadComboBoxItem Content="30" Tag="30"/>
+                            <telerik:RadComboBoxItem Content="40" Tag="40"/>
+                            <telerik:RadComboBoxItem Content="50" Tag="50"/>
+                            <telerik:RadComboBoxItem Content="ALL" Tag="0" />
+                        </telerik:RadComboBox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ContentControl" x:Key="RadDataFormLabelStyle">
+        <Setter Property="IsTabStop" Value="False" />
+    </Style>
+
+    <Style TargetType="telerik:RadDataForm" BasedOn="{StaticResource RadDataFormStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(Validation.HasError)}" Value="true">
+                <Setter Property="CommitButtonStyle">
+                    <Setter.Value>
+                        <Style TargetType="{x:Type telerik:RadButton}" >
+                            <Setter Property="IsEnabled" Value="false" />
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+
+            <Trigger Property="CurrentItem" Value="{x:Null}">
+                <Setter Property="CommandButtonsVisibility" Value="Add, Edit, Commit, Cancel, Navigation" />
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="smartClient:CetDataForm" BasedOn="{StaticResource RadDataFormStyle}">
+        <Setter Property="CommandButtonsVisibility" Value="None"/>
+        <Setter Property="AutoGenerateFields" Value="False"/>
+        <!--<Setter Property="AutoCommit" Value="False"/>-->
+        <Setter Property="EnablePropertyChangedBasedCancel" Value="False" />
+        <Setter Property="LabelStyle" Value="{StaticResource RadDataFormLabelStyle}"/>
+    </Style>
+
+    <Style TargetType="smartClient:CetAutoCompleteBox" BasedOn="{StaticResource RadAutoCompleteBoxStyle}"/>
+
+    <Style TargetType="telerik:GridViewDataColumn">
+        <Setter Property="HeaderTextAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="telerik:RadTabItem" BasedOn="{StaticResource RadTabItemStyle}">
+        <Style.Setters>
+            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+            <Setter Property="Header" Value="{Binding Header, Mode=TwoWay, Converter={StaticResource StringConverter}}"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <ContentControl Content="{Binding}"/>
+                        </ScrollViewer>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style.Setters>
+    </Style>
+
+    <Style TargetType="telerik:RadPanelBar" BasedOn="{StaticResource RadPanelBarStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+    </Style>
+
+    <Style TargetType="telerik:RadExpander" BasedOn="{StaticResource RadExpanderStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+    </Style>
+
+    <Style x:Key="OKButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Width" Value="50"/>
+    </Style>
+
+    <Style x:Key="AddButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                <Setter Property="IsEnabled" Value="False"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CancelButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="2,0"/>
+    </Style>
+
+    <Style x:Key="PssLabelStyle" TargetType="telerik:Label">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+    </Style>
+
+    <Style x:Key="TitleLabelStyle" TargetType="telerik:Label">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+        <Setter Property="Foreground" Value="#25a0da"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="PssTextBoxStyle" TargetType="telerik:RadWatermarkTextBox">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="Maroon"/>
+    </Style>
+
+    <Style x:Key="SummaryLabelStyle" TargetType="telerik:Label">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+    </Style>
+
+    <Style x:Key="PrintButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Height" Value="70"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Padding" Value="5 10 5 2" />
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="Print1ButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource PrintButtonStyle}">
+        <Setter Property="ToolTip" Value="{lex:LocText Cet.SmartClient.Client:Messages:PRINT_BUTTON}"/>
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/print5.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Print2ButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource PrintButtonStyle}">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/print5.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CommitFlowButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource PrintButtonStyle}">
+        <Setter Property="ToolTip" Value="{lex:LocText Cet.SmartClient.Client:Messages:COMMIT_FLOW_BUTTON}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/checked.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CancelFlowButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource PrintButtonStyle}">
+        <Setter Property="ToolTip" Value="{lex:LocText Cet.SmartClient.Client:Messages:CANCEL_FLOW_BUTTON}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/close.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RollbackFlowButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource PrintButtonStyle}">
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="ToolTip" Value="{lex:LocText Cet.SmartClient.Client:Messages:ROLLBACK_FLOW_BUTTON}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/return.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="CommitButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                <Setter Property="IsEnabled" Value="False"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="RollBackButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                <Setter Property="IsEnabled" Value="False"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="EditorAreaStyle">
+        <Style.Resources>
+            <Style TargetType="telerik:RadDataForm" BasedOn="{StaticResource {x:Type telerik:RadDataForm}}">
+                <Setter Property="MinWidth" Value="600"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="120"/>
+            </Style>
+            <Style TargetType="telerik:RadDatePicker">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+            <Style TargetType="telerik:RadComboBox">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="SearchAreaStyle">
+        <Style.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="120"/>
+            </Style>
+            <Style TargetType="telerik:RadDatePicker">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+            <Style TargetType="telerik:RadComboBox">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="ContentControl.ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <telerik:RadExpander ExpandDirection="Down" BorderBrush="DarkGray" BorderThickness="2" IsExpanded="True" Header="{lex:LocText MsatWgRecords.Shell:MainWindow:Search}">
+                        <telerik:RadExpander.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="3" />
+                                </Grid.RowDefinitions>
+                                <ContentPresenter Content="{Binding}"/>
+                                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="3" ResizeBehavior="PreviousAndCurrent" ResizeDirection="Rows"/>
+                            </Grid>
+                        </telerik:RadExpander.Content>
+                    </telerik:RadExpander>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SearchCriteriaAreaStyle">
+        <Setter Property="ContentControl.ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel>
+                        <ContentPresenter Content="{Binding}"/>
+                        <Separator />
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="120"/>
+            </Style>
+            <Style TargetType="telerik:RadDatePicker" BasedOn="{StaticResource RadDateTimePickerStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+            <Style TargetType="telerik:RadComboBox" BasedOn="{StaticResource RadComboBoxStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="SearchCriteriaAreaWithExpanderStyle">
+        <Setter Property="ContentControl.ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <telerik:RadExpander ExpandDirection="Down" BorderBrush="DarkGray" BorderThickness="2" IsExpanded="True" Header="{lex:LocText MsatWgRecords.Shell:MainWindow:Search}">
+                        <telerik:RadExpander.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="3" />
+                                </Grid.RowDefinitions>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <ContentPresenter Content="{Binding}"/>
+                                </ScrollViewer>
+                                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="3" ResizeBehavior="PreviousAndCurrent" ResizeDirection="Rows"/>
+                            </Grid>
+                        </telerik:RadExpander.Content>
+                    </telerik:RadExpander>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="120"/>
+            </Style>
+            <Style TargetType="telerik:RadDatePicker" BasedOn="{StaticResource RadDateTimePickerStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+            <Style TargetType="telerik:RadComboBox" BasedOn="{StaticResource RadComboBoxStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="SearchResultAreaStyle">
+        <Style.Resources>
+            <Style TargetType="telerik:RadGridView" BasedOn="{StaticResource RadGridViewStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="ShowGroupPanel" Value="False"/>
+                <Setter Property="RowIndicatorVisibility" Value="Collapsed"/>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+                <Setter Property="CanUserDeleteRows" Value="False" />
+                <Setter Property="CanUserFreezeColumns" Value="False" />
+                <Setter Property="ValidatesOnDataErrors" Value="InEditMode"/>
+                <Setter Property="NewRowPosition" Value="None"/>
+                <Setter Property="IsFilteringAllowed" Value="False"/>
+                <Setter Property="ActionOnLostFocus" Value="None"/>
+                <Setter Property="IsLocalizationLanguageRespected" Value="False"/>
+                <Setter Property="SelectionUnit" Value="FullRow"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="DetailAreaStyle">
+        <Style.Resources>
+            <!--<Style TargetType="TextBox">
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="120"/>
+            </Style>
+            <Style TargetType="telerik:RadDatePicker">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+            <Style TargetType="telerik:RadComboBox">
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>-->
+        </Style.Resources>
+    </Style>
+    <Style x:Key="RemoveButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="IsEnabled" Value="{Binding CanDeleteItem}"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                <Setter Property="IsEnabled" Value="False"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SearchButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ToolTip" Value="Search"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Search-Bt.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ReloadButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource SearchButtonStyle}">
+        <Setter Property="ToolTip" Value="Reload"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/reload.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RS232ButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/crlRS232.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MasterAreaStyle">
+        <Style.Resources>
+            <Style TargetType="telerik:RadDatePicker" BasedOn="{StaticResource RadDateTimePickerStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+            </Style>
+            <Style TargetType="telerik:DataFormDateField">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="ClearCriteriaButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ToolTip" Value="Clear criteria"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/clear.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ReLoadButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/reload.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ExportExcelButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/export_excel.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ActiveMasterAreaStyle">
+        <Style.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="120"/>
+            </Style>
+            <Style TargetType="telerik:RadDatePicker" BasedOn="{StaticResource RadDateTimePickerStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+            <Style TargetType="telerik:RadComboBox" BasedOn="{StaticResource RadComboBoxStyle}">
+                <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="100"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="AutoCompleteStyle" TargetType="{x:Type telerik:RadComboBox}" BasedOn="{StaticResource RadComboBoxStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="OpenDropDownOnFocus" Value="True" />
+        <Setter Property="StaysOpenOnEdit" Value="True"/>
+        <Setter Property="IsEditable" Value="True"/>
+        <Setter Property="IsTextSearchEnabled" Value="False"/>
+        <Setter Property="CanKeyboardNavigationSelectItems" Value="False" />
+    </Style>
+
+    <Style TargetType="telerik:RadButton" x:Key="EditorButtonStyle" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="2,5"/>
+        <Setter Property="Padding" Value="3,2"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="False"/>
+    </Style>
+
+    <Style x:Key="SearchViewBaseStyle">
+        <Setter Property="ContentControl.ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <DockPanel DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                        <telerik:RadBusyIndicator IsBusy="{Binding Path=IsBusy}" IsIndeterminate="True" DisplayAfter="0">
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </telerik:RadBusyIndicator>
+                    </DockPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EditorViewBaseStyle">
+        <Setter Property="ContentControl.ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <DockPanel DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                        <telerik:RadBusyIndicator IsBusy="{Binding Path=IsBusy}" IsIndeterminate="True" DisplayAfter="0">
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </telerik:RadBusyIndicator>
+                    </DockPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Windows8ButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="OrangeRed"/>
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="DimGray"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    </Style>
+
+
+    <Style x:Key="InterfaceDisplayStyle"  TargetType="telerik:Label" BasedOn="{StaticResource RadDataFormLabelStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Foreground" Value="LightBlue" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+    </Style>
+
+    <Style x:Key="ButtonLocationIconStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="60"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    </Style>
+    <Style x:Key="ButtonLocationTypeIconStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonLocationIconStyle}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Medium/box-gray.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonLocationNameIconStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonLocationIconStyle}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Medium/vender.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonLookupIconStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonLocationIconStyle}">
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/folder.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonWgRecordsStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonLocationIconStyle}">
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Medium/MeasureSave.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ExportDocumentButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ExportExcelButtonStyle}">
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="70"/>
+        <Setter Property="Padding" Value="1 5 1 1"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+
+    <Style x:Key="ImportFileButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/import_file.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="AutoImportFileButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ImportFileButtonStyle}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/watch.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="StopImportFileButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ImportFileButtonStyle}">
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/stop.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="ButtonHomePageStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="80"/>
+        <Setter Property="Width" Value="130"/>
+        <Setter Property="Height" Value="130"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Telerik.Windows.Themes.Windows8;Component/Themes/Images/Cet-Search-Bt.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WgRecordsButtonHomeStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonHomePageStyle}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Medium/MeasureSave.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ReportButtonHomePageStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonHomePageStyle}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Medium/report.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImportButtonHomePageStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonHomePageStyle}">
+        <Setter Property="Padding" Value="25" />
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/import.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FacesButtonHomeStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource ButtonHomePageStyle}">
+        <Setter Property="Padding" Value="25" />
+        <Setter Property="Width" Value="90"/>
+        <Setter Property="Height" Value="90"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Medium/face.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LabelMenuHomePageStyle" TargetType="{x:Type telerik:Label}" BasedOn="{StaticResource RadDataFormLabelStyle}">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="#25a0da" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MoveButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource RadButtonStyle}">
+        <Setter Property="telerik:StyleManager.Theme" Value="Windows8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="80"/>
+        <Setter Property="Width" Value="26"/>
+        <Setter Property="Height" Value="26"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    </Style>
+
+    <Style x:Key="MoveUpButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource MoveButtonStyle}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/arrow-up.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MoveDownButtonStyle" TargetType="{x:Type telerik:RadButton}" BasedOn="{StaticResource MoveButtonStyle}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/Images/Button_2017_Small/arrow-down.png"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

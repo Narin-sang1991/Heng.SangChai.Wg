@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AA2B1485-5365-42E8-9838-08E94063858C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>H.SangChai.WgRecords.Shell</RootNamespace>
+    <AssemblyName>H.SangChai.WgRecords.Shell</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\EntLib5\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\References\EntLib5\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\EntLib5\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation">
+      <HintPath>..\References\EntLib5\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF">
+      <HintPath>..\References\EntLib5\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF">
+      <HintPath>..\References\EntLib5\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\References\PrismWeb\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\References\PrismWeb\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\References\EntLib5\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\EntLib5\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\References\EntLib5\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Controls.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\References\Telerik\Binaries\WPF45\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.FactoryConfig">
+      <HintPath>..\References\EntLib5\Unity.FactoryConfig.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFLocalizeExtension">
+      <HintPath>..\References\WPFLocalizeExtension\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\CloseCommand.cs" />
+    <Compile Include="Resources\MainWindow.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainWindow.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BootstrapperClient.cs" />
+    <Compile Include="DocumentOpenListener.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\AboutViewResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\CommonResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MainWindow.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MainWindow.th.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\Logging.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Logging.Release.config">
+      <DependentUpon>Logging.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Logging.Debug.config">
+      <DependentUpon>Logging.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Resource Include="Images\Button_2017_Medium\face.png" />
+    <Resource Include="Images\Button_2017_Medium\MeasureSave.png" />
+    <Resource Include="Images\Button_2017_Medium\report.png" />
+    <Resource Include="Images\Button_2017_Small\arrow-down.png" />
+    <Resource Include="Images\Button_2017_Small\arrow-up.png" />
+    <Resource Include="Images\Button_2017_Small\Cet-Add-Bt.png" />
+    <Resource Include="Images\Button_2017_Small\Cet-Cancle-Bt.png" />
+    <Resource Include="Images\Button_2017_Small\Cet-Del-Bt.png" />
+    <Resource Include="Images\Button_2017_Small\Cet-Edit-Bt.png" />
+    <Resource Include="Images\Button_2017_Small\Cet-Save-Bt.png" />
+    <Resource Include="Images\Button_2017_Small\Cet-Search-Bt.png" />
+    <Resource Include="Images\Button_2017_Small\export_excel.png" />
+    <Resource Include="Images\Button_2017_Small\export_file.png" />
+    <Resource Include="Images\Button_2017_Small\file.png" />
+    <Resource Include="Images\Button_2017_Small\folder.png" />
+    <Resource Include="Images\Button_2017_Small\import.png" />
+    <Resource Include="Images\Button_2017_Small\import_excel.png" />
+    <Resource Include="Images\Button_2017_Small\import_file.png" />
+    <Resource Include="Images\Button_2017_Small\print5.png" />
+    <Resource Include="Images\Button_2017_Small\printer.png" />
+    <Resource Include="Images\Button_2017_Small\stop.png" />
+    <Resource Include="Images\Button_2017_Small\USB.png" />
+    <Resource Include="Images\Button_2017_Small\watch.png" />
+    <Resource Include="Images\LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\Modules.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Modules.Release.config">
+      <DependentUpon>Modules.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Modules.Debug.config">
+      <DependentUpon>Modules.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\ServiceEndPoints.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\ServiceEndPoints.Release.config">
+      <DependentUpon>ServiceEndPoints.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\ServiceEndPoints.Debug.config">
+      <DependentUpon>ServiceEndPoints.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\ServiceExtensions.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\ServiceExtensions.Release.config">
+      <DependentUpon>ServiceExtensions.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\ServiceExtensions.Debug.config">
+      <DependentUpon>ServiceExtensions.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\Validation.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Validation.Release.config">
+      <DependentUpon>Validation.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Validation.Debug.config">
+      <DependentUpon>Validation.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\Unity.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Unity.Release.config">
+      <DependentUpon>Unity.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\Unity.Debug.config">
+      <DependentUpon>Unity.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App.Release.config">
+      <DependentUpon>App.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App.Debug.config">
+      <DependentUpon>App.Template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cet.Core.Utility\Cet.Core.Utility.csproj">
+      <Project>{9346bbd1-7bc7-47c6-b747-b4a147901b6f}</Project>
+      <Name>Cet.Core.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Core\Cet.Core.csproj">
+      <Project>{3a9f6890-3d54-49e8-9482-af67786c0da8}</Project>
+      <Name>Cet.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Hw.Core.AppServiceContract\Cet.Hw.Core.AppServiceContract.csproj">
+      <Project>{3f05c693-1ae0-4f4c-80c8-efd3f3940dac}</Project>
+      <Name>Cet.Hw.Core.AppServiceContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Hw.Core.SmartClient\Cet.Hw.Core.SmartClient.csproj">
+      <Project>{6aa5270d-8327-4c9d-ad63-7424eeb87210}</Project>
+      <Name>Cet.Hw.Core.SmartClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.Hw.Core\Cet.Hw.Core.csproj">
+      <Project>{9fb76912-0215-4bb2-acbb-d62e84c7ca54}</Project>
+      <Name>Cet.Hw.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cet.SmartClient.Client\Cet.SmartClient.Client.csproj">
+      <Project>{61c439d8-6b62-464e-84c8-53353374f0f9}</Project>
+      <Name>Cet.SmartClient.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\References\Telerik\Themes.Implicit\WPF40\Windows8\Windows8_WPF.csproj">
+      <Project>{87d19eaa-2579-4660-94ea-f45b05ef6fd8}</Project>
+      <Name>Windows8_WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PrepareForRunDependsOn> 
+      $(PrepareForRunDependsOn); 
+      TransformConfiguration;
+	  CopyAdditionalConfiguration;
+    </PrepareForRunDependsOn>
+    <BuildDependsOn> 
+      $(BuildDependsOn); 
+      TransformConfiguration; 
+	  CopyAdditionalConfiguration;
+    </BuildDependsOn>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.targets" />
+  <Target Name="TransformConfiguration">
+    <TransformXml Source="App.Template.config" Transform="App.$(Configuration).config" Destination="App.config" />
+    <!--Unity-->
+    <Copy SourceFiles="Configs\Unity.Template.config" DestinationFiles="Configs\Unity.config.tmp1" />
+    <TransformXml Source="Configs\Unity.config.tmp1" Transform="..\Cet.Hw.Core.SmartClient\Configs\Unity.Transform.config" Destination="Configs\Unity.config.tmp2" />
+    <TransformXml Source="Configs\Unity.config.tmp2" Transform="Configs\Unity.Transform.config" Destination="Configs\Unity.config.tmp3" />
+    <Copy SourceFiles="Configs\Unity.config.tmp3" DestinationFiles="Configs\Unity.config" />
+    <!--Endpoints-->
+    <Copy SourceFiles="Configs\ServiceEndpoints.Template.config" DestinationFiles="Configs\ServiceEndpoints.config.tmp1" />
+    <TransformXml Source="Configs\ServiceEndpoints.config.tmp1" Transform="..\Cet.Hw.Core.SmartClient\Configs\ServiceEndpoints.Transform.config" Destination="Configs\ServiceEndpoints.config.tmp2" />
+    <TransformXml Source="Configs\ServiceEndPoints.config.tmp2" Transform="Configs\ServiceEndPoints.$(Configuration).config" Destination="Configs\ServiceEndPoints.config.tmp3" />
+    <Copy SourceFiles="Configs\ServiceEndpoints.config.tmp3" DestinationFiles="Configs\ServiceEndpoints.config" />
+    <!--Logging-->
+    <TransformXml Source="Configs\Logging.Template.config" Transform="Configs\Logging.$(Configuration).config" Destination="Configs\Logging.config" />
+    <TransformXml Source="Configs\Modules.Template.config" Transform="Configs\Modules.$(Configuration).config" Destination="Configs\Modules.config" />
+    <TransformXml Source="Configs\ServiceBehaviors.Template.config" Transform="Configs\ServiceBehaviors.$(Configuration).config" Destination="Configs\ServiceBehaviors.config" />
+    <TransformXml Source="Configs\ServiceBindings.Template.config" Transform="Configs\ServiceBindings.$(Configuration).config" Destination="Configs\ServiceBindings.config" />
+    <TransformXml Source="Configs\ServiceExtensions.Template.config" Transform="Configs\ServiceExtensions.$(Configuration).config" Destination="Configs\ServiceExtensions.config" />
+    <!--Validation-->
+    <Copy SourceFiles="Configs\Validation.Template.config" DestinationFiles="Configs\Validation.config.tmp1" />
+    <TransformXml Source="Configs\Validation.config.tmp1" Transform="Configs\Validation.Transform.config" Destination="Configs\Validation.config.tmp2" />
+    <TransformXml Source="Configs\Validation.config.tmp2" Transform="Configs\Validation.$(Configuration).config" Destination="Configs\Validation.config.tmp3" />
+    <Copy SourceFiles="Configs\Validation.config.tmp3" DestinationFiles="Configs\Validation.config" />
+  </Target>
+  <Target Name="CopyAdditionalConfiguration">
+    <MakeDir Directories="$(TargetDir)Configs" />
+    <CreateItem Include="$(ProjectDir)Configs\*">
+      <Output TaskParameter="Include" ItemName="MyFilesToCopy" />
+    </CreateItem>
+    <Copy SourceFiles="@(MyFilesToCopy)" DestinationFolder="$(TargetDir)Configs\" />
+    <Copy SourceFiles="App.config" DestinationFiles="$(TargetPath).config" />
+    <MakeDir Directories="$(TargetDir)Images" />
+    <CreateItem Include="$(ProjectDir)Images\*">
+      <Output TaskParameter="Include" ItemName="ImgFilesToCopy" />
+    </CreateItem>
+    <Copy SourceFiles="@(ImgFilesToCopy)" DestinationFolder="$(TargetDir)Images\" />
+  </Target>
+</Project>

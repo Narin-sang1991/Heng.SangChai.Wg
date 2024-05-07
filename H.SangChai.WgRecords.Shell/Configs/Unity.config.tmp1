@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<unity>
+  <sectionExtension type="Unity.FactoryConfig.FactoryConfigExtension, Unity.FactoryConfig"/>
+  <alias alias="singleton" type="Microsoft.Practices.Unity.ContainerControlledLifetimeManager, Microsoft.Practices.Unity"/>
+  <assembly name="Cet.Core"/>
+  <namespace name="Cet.Core"/>
+  <assembly name="Cet.SmartClient.Client" />
+  <namespace name="Cet.SmartClient.Client" />
+  <assembly name="System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+  <namespace name="System.ServiceModel"/>
+  <assembly name="PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+  <namespace name="System.Windows.Input" />
+  <namespace name="System.Collections.ObjectModel" />
+  <namespace name="System" />
+  <containers>
+    <container>
+      <types>
+      </types>
+    </container>
+  </containers>
+</unity>

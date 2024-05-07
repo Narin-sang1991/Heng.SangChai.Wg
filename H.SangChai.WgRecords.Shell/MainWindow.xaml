@@ -1,0 +1,55 @@
+﻿<Window x:Class="H.SangChai.WgRecords.Shell.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerikDock="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Docking" 
+        xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation" 
+        xmlns:Telerik_Windows_Controls_Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" 
+        xmlns:Telerik_Windows_Controls_Primitives="clr-namespace:Telerik.Windows.Controls.Primitives;assembly=Telerik.Windows.Controls.Navigation" 
+        xmlns:Telerik_Windows_Controls_TabControl="clr-namespace:Telerik.Windows.Controls.TabControl;assembly=Telerik.Windows.Controls.Navigation" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:cal="http://www.codeplex.com/CompositeWPF" 
+        xmlns:c="clr-namespace:H.SangChai.WgRecords.Shell.Commands" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:lex="http://schemas.root-project.org/xaml/presentation"
+        mc:Ignorable="d" Name="ctlMainWindowView" WindowState="Maximized"
+        Title="MainWindow">
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Grid DockPanel.Dock="Top" Height="30" Background="PowderBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Menu x:Name="ctlMainMenu" VerticalAlignment="Center" FontSize="14" Background="Transparent" ItemsSource="{Binding MenuList}">
+                    <!--<Menu.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </Menu.ItemsPanel>-->
+                </Menu>
+                <!--<DockPanel DataContext="{Binding UserInfo}" Grid.Column="1" Margin="0,0,30,0" HorizontalAlignment="Left">-->
+                <DockPanel Grid.Column="1" Margin="0,0,30,0" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                    <TextBlock Text="{lex:LocText H.SangChai.WgRecords.Shell:MainWindow:Ou}" FontWeight="Bold" Margin="0,0,5,0" />
+                    <TextBlock Text="{Binding OuName}" FontWeight="Bold"/>
+                </DockPanel>
+                <DockPanel Grid.Column="2" Margin="0,0,30,0" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                    <TextBlock Text="{lex:LocText H.SangChai.WgRecords.Shell:MainWindow:User}" FontWeight="Bold" Margin="0,0,5,0" />
+                    <TextBlock Text="{Binding ProfileName}" FontWeight="Bold"/>
+                </DockPanel>
+
+            </Grid>
+            <telerik:RadDocking x:Name="radDocking" Margin="0" Padding="0" PreviewClose="radDocking_PreviewClose">
+                <!--<telerik:RadDocking.Background>
+                    <ImageBrush ImageSource="Images/PSS_Bg.jpg" />
+                </telerik:RadDocking.Background>-->
+                <telerik:RadDocking.DocumentHost>
+                    <telerik:RadSplitContainer>
+                        <telerik:RadPaneGroup x:Name="radPanGroupMainContent" cal:RegionManager.RegionName="ContentRegion"  IsContentPreserved="True">
+                        </telerik:RadPaneGroup>
+                    </telerik:RadSplitContainer>
+                </telerik:RadDocking.DocumentHost>
+            </telerik:RadDocking>
+        </DockPanel>
+    </Grid>
+</Window>

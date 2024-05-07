@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<unity>
+  <sectionExtension type="Unity.FactoryConfig.FactoryConfigExtension, Unity.FactoryConfig"/>
+  <alias alias="singleton" type="Microsoft.Practices.Unity.ContainerControlledLifetimeManager, Microsoft.Practices.Unity"/>
+  <assembly name="Cet.Core"/>
+  <namespace name="Cet.Core"/>
+  <assembly name="Cet.SmartClient.Client" />
+  <namespace name="Cet.SmartClient.Client" />
+  <assembly name="System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+  <namespace name="System.ServiceModel"/>
+  <assembly name="PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+  <namespace name="System.Windows.Input" />
+  <namespace name="System.Collections.ObjectModel" />
+  <namespace name="System" />
+  <containers>
+    <container>
+      <types>
+        <type type="MessageHeaderInserterBase" mapTo="CultureMessageHeaderInserter" name="CultureMessageHeaderInserter"/>
+        <type type="ChannelFactory`1[IUserService]">
+          <constructor>
+            <param name="endpointConfigurationName">
+              <value value="UserService"/>
+            </param>
+          </constructor>
+          <lifetime type="singleton"/>
+        </type>
+        <type type="IUserService">
+          <factory type="ChannelInjectionFactory`1[IUserService]" method="CreateChannel"/>
+        </type>
+        <type type="ChannelFactory`1[IMenuService]">
+          <constructor>
+            <param name="endpointConfigurationName">
+              <value value="MenuService"/>
+            </param>
+          </constructor>
+          <lifetime type="singleton"/>
+        </type>
+        <type type="IMenuService">
+          <factory type="ChannelInjectionFactory`1[IMenuService]" method="CreateChannel"/>
+        </type>
+        <type type="ChannelFactory`1[IFormAuthenticationService]">
+          <constructor>
+            <param name="endpointConfigurationName">
+              <value value="FormAuthenticationService"/>
+            </param>
+          </constructor>
+          <lifetime type="singleton"/>
+        </type>
+        <type type="IFormAuthenticationService">
+          <factory type="ChannelInjectionFactory`1[IFormAuthenticationService]" method="CreateChannel"/>
+        </type>
+        <type type="MenuCommand" mapTo="AboutCommand" name="About"/>
+        <type type="MenuCommand" mapTo="ChangeLanguageCommand" name="LanguageENCommand">
+          <constructor>
+            <param name="container">
+              <dependency type="Microsoft.Practices.Unity.IUnityContainer, Microsoft.Practices.Unity"/>
+            </param>
+            <param name="languageName" value="en-US"/>
+          </constructor>
+        </type>
+        <type type="MenuCommand" mapTo="ChangeLanguageCommand" name="LanguageTHCommand">
+          <constructor>
+            <param name="container">
+              <dependency type="Microsoft.Practices.Unity.IUnityContainer, Microsoft.Practices.Unity"/>
+            </param>
+            <param name="languageName" value="th-TH"/>
+          </constructor>
+        </type>
+        <type type="MenuCommand" mapTo="UserManagerCommand" name="UserManager"/>
+      </types>
+      <instance name="BGImageUrl" value="BGImageUrl"/>
+      <instance name="DefaultLogoURL" value="/Images/LOGO.png"/>
+      <instance name="ServerBaseUrl" value="http://heng.sang-chai.web:8107"/>
+      <instance name="DecimalScaleClient" value="2" type="System.Byte"/>
+      <instance name="AppTitle" value="Heng Sang Chai WG Solution"/>
+      <instance name="MinimumLengthAutoTextSearch" value="2" type="System.Byte"/>
+      <instance name="DelayResetStanbyInput" value="5000" type="System.Int32"/>
+      <instance name="ErrorValueReceive" value="100" type="System.Decimal"/>
+    </container>
+  </containers>
+  <assembly name="Cet.Hw.Core.SmartClient"/>
+  <namespace name="Cet.Hw.Core.SmartClient"/>
+  <namespace name="Cet.Hw.Core.SmartClient.Commands"/>
+  <assembly name="Cet.Hw.Core.SmartClient.ViewModels"/>
+  <namespace name="Cet.Hw.Core.SmartClient.ViewModels"/>
+  <assembly name="Cet.Hw.Core.AppServiceContract"/>
+  <namespace name="Cet.Hw.Core.AppServiceContract"/>
+  <assembly name="H.SangChai.WgRecords.Shell"/>
+  <namespace name="H.SangChai.WgRecords.Shell"/>
+  <namespace name="H.SangChai.WgRecords.Shell.Commands"/>
+</unity>

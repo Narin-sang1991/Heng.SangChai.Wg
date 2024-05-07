@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<client>
+	<endpoint name="MenuService" address="http://dummy/Modules/Core.AppService/MenuService.svc" binding="basicHttpBinding"
+		contract="Cet.Hw.Core.AppServiceContract.IMenuService" bindingConfiguration="basicHttpEndpointBinding" behaviorConfiguration="MessageHeaderInserterBehavior"/>
+	<endpoint name="FormAuthenticationService" address="http://dummy/Modules/Core.AppService/FormAuthenticationService.svc" binding="basicHttpBinding"
+		contract="Cet.Hw.Core.AppServiceContract.IFormAuthenticationService" bindingConfiguration="basicHttpEndpointBinding"
+		behaviorConfiguration="MessageHeaderInserterBehavior"/>
+	<endpoint name="UserService" address="http://dummy/Modules/Core.AppService/UserService.svc" binding="basicHttpBinding"
+		contract="Cet.Hw.Core.AppServiceContract.IUserService" bindingConfiguration="basicHttpEndpointBinding" behaviorConfiguration="MessageHeaderInserterBehavior"/>
+ 
+</client>
