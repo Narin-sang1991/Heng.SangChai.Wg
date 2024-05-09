@@ -61,6 +61,31 @@ namespace H.SangChai.WgRecords.Shell
             else base.app_DispatcherUnhandledException(sender, e);
         }
 
+        protected override void InitializeModules()
+        {
+            base.InitializeModules();
+           
+            regionManager = Container.Resolve<IRegionManager>();
+            AddHomePage();
+        }
+
+        void AddHomePage()
+        {
+            IRegion region = regionManager.Regions["ContentRegion"];
+            string viewName = "WgRecordEditorView";
+            object view = region.GetView(viewName);
+
+            if (view == null)
+            {
+                var usercontrol = Container.Resolve<WgRecordEditorView>();
+                var viewModel = Container.Resolve<WgRecordEditorVM>();
+                //viewModel.Header = new LocTextExtension() { Key = "HomePage_Title", Dict = "MainWindow", Assembly = "MsatWgRecords.Shell" };
+                usercontrol.DataContext = viewModel;
+                view = region.AddView(usercontrol, viewName);
+            }
+            region.Activate(view);
+        }
+
         private void shell_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             foreach (RadPane pane in ((H.SangChai.WgRecords.Shell.MainWindow)(sender)).radPanGroupMainContent.Items)

@@ -126,12 +126,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CloseCommand.cs" />
+    <Compile Include="Enums\RS232SaveStatus.cs" />
+    <Compile Include="IOModels\RS232SerialPortControlBase.cs" />
+    <Compile Include="IOModels\RS232SerialPortInput.cs" />
+    <Compile Include="Models\MeasuringData.cs" />
+    <Compile Include="PartTransferItemSearchView.xaml.cs">
+      <DependentUpon>PartTransferItemSearchView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\MainWindow.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MainWindow.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PartTransferItemSearchVM.cs" />
+    <Compile Include="ViewModels\TransactionIOEditorVM.cs" />
+    <Compile Include="ViewModels\WgRecordEditorVM.cs" />
+    <Compile Include="WgRecordEditorView.xaml.cs">
+      <DependentUpon>WgRecordEditorView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,11 +159,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartTransferItemSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\AboutViewResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\CommonResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WgRecordEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
