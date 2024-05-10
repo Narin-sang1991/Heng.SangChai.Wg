@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.Docking;
+
 namespace H.SangChai.WgRecords.Shell.Commands
 {
     public class CloseCommand : ICommand

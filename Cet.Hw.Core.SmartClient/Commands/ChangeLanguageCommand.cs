@@ -14,7 +14,6 @@ namespace Cet.Hw.Core.SmartClient.Commands
 {
     public class ChangeLanguageCommand : MenuCommand
     {
-        private readonly IUnityContainer container;
         private string languageName;
         public string LanguageName
         {
@@ -24,7 +23,6 @@ namespace Cet.Hw.Core.SmartClient.Commands
 
         public ChangeLanguageCommand(IUnityContainer container, string languageName) : base(container, MenuResources.ChangeLanguageEN)
         {
-            this.container = container;
             this.languageName = languageName;
         }
 

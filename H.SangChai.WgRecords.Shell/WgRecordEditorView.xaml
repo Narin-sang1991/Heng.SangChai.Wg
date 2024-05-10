@@ -16,7 +16,7 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
             <DockPanel>
 
-                <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left" Width="560" Margin="5" Background="WhiteSmoke">
+                <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left" Width="500" Margin="5" Background="WhiteSmoke">
                     <Grid>
                         <Grid.RowDefinitions >
                             <RowDefinition Height="4*" />
@@ -103,7 +103,7 @@
                                     <ColumnDefinition Width="0.5*" />
                                 </Grid.ColumnDefinitions>
                                 <telerik:Label Name="dspDefaultTare" Grid.Row="0" Grid.Column="0" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:DefaultTare}" Margin="5" Style="{StaticResource SummaryLabelStyle}"/>
-                                <TextBox Name="ctlDefaultTare" Grid.Row="0" Grid.Column="1" Text="{Binding DefaultTare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='#,##0.#0'}" Margin="5" FontSize="22" Foreground="Maroon" FontWeight="UltraBold"/>
+                                <TextBox Name="ctlDefaultTare" Grid.Row="0" Grid.Column="1" Text="{Binding DefaultTare, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat='#,##0.#0'}" Margin="5" FontSize="22" Foreground="Maroon" FontWeight="UltraBold"/>
                                 <telerik:Label Name="dspKgs" Grid.Row="0" Grid.Column="2" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Unit}" Margin="5" Style="{StaticResource SummaryLabelStyle}"/>
                             </Grid>
                         </DockPanel>
@@ -137,7 +137,7 @@
                     </Grid>
                 </DockPanel>
                 <ContentControl DockPanel.Dock="Bottom" Style="{StaticResource SearchResultAreaStyle}" IsEnabled="{Binding AllowCommit}"
-                    MinWidth="560" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="5,0,0,0">
+                    MinWidth="500" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="5,0,0,0">
                     <telerik:RadTabControl ItemsSource="{Binding ChildNodes}">
                         <telerik:RadTabControl.Resources>
                             <DataTemplate DataType="{x:Type localVM:PartTransferItemSearchVM}">

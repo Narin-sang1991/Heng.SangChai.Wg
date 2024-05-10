@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Media;
+using System.Threading;
 
 namespace H.SangChai.WgRecords.Shell.ViewModels
 {
@@ -44,8 +45,14 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
 
         internal void CopyWgItemToClipboard(decimal netWeight)
         {
+            //    Thread t = new Thread((ThreadStart)(() =>
+            //    {
             Clipboard.SetText(netWeight.ToString(), TextDataFormat.Text);
             SystemSounds.Beep.Play();
+            //}));
+            //t.SetApartmentState(ApartmentState.STA);
+            //t.Start();
+            //t.Join();
         }
 
         protected override void PrepareDefaultSortingCriteria(SortingCriteria sortingCriteria)
@@ -68,8 +75,6 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
                 DateTimeStamp = DateTime.Now,
                 CurrentClipboard = true,
             };
-
-            CopyWgItemToClipboard(iWeightData.NetWeight);
             var newItems = new List<MeasuringItemData>();
             newItems.Add(data);
             foreach (var item in this.SearchResult)
@@ -77,7 +82,13 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
                 item.CurrentClipboard = false;
                 newItems.Add(item);
             }
-            PrepareListViewCollection(newItems);
+
+            App.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+            {
+                PrepareListViewCollection(newItems);
+                CopyWgItemToClipboard(iWeightData.NetWeight);
+            });
+
             return newId != Guid.Empty;
         }
 

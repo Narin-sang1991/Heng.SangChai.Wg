@@ -1,4 +1,5 @@
 ﻿using Cet.Core;
+using Cet.Hw.Core.SmartClient.ViewModels;
 using Cet.SmartClient.Client;
 using H.SangChai.WgRecords.Shell.ViewModels;
 using Microsoft.Practices.Prism.Regions;
@@ -65,7 +66,10 @@ namespace H.SangChai.WgRecords.Shell
         protected override void InitializeModules()
         {
             base.InitializeModules();
-           
+            AutoLogin();
+
+            documentOpenListener = this.Container.Resolve<DocumentOpenListener>();
+            documentOpenListener.Initialize();
             regionManager = Container.Resolve<IRegionManager>();
             AddHomePage();
         }
@@ -86,6 +90,33 @@ namespace H.SangChai.WgRecords.Shell
             }
             region.Activate(view);
         }
+
+        private void AutoLogin()
+        {
+            //    bool loginSuccess = false;
+
+            //    LoginVM loginVM = this.Container.Resolve<LoginVM>();
+
+            //    if (!loginSuccess)
+            //    {
+            //        LoginView loginView = this.Container.Resolve<LoginView>();
+            //        loginView.DataContext = loginVM;
+            //        loginSuccess = (bool)loginView.ShowDialog();
+            //    }
+            MenuGenerator menuGenerator = this.Container.Resolve<MenuGenerator>();
+            menuGenerator.LoadAnonymousMenu();
+            //menuGenerator.GetExecutePermission();
+            //menuGenerator.GetManagePermission();
+
+            var shell = this.Shell as MainWindow;
+            var vm = shell.DataContext as MainViewModel;
+            try
+            {
+                vm.ProfileName = Environment.UserName;
+            }
+            catch { }
+        }
+
 
         private void shell_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

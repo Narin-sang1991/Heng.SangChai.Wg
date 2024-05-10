@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -126,9 +129,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CloseCommand.cs" />
+    <Compile Include="Commands\WgRecordEditorCommand.cs" />
     <Compile Include="Enums\RS232SaveStatus.cs" />
     <Compile Include="IOModels\RS232SerialPortControlBase.cs" />
     <Compile Include="IOModels\RS232SerialPortInput.cs" />
+    <Compile Include="MenuResources.cs" />
     <Compile Include="Models\MeasuringData.cs" />
     <Compile Include="PartTransferItemSearchView.xaml.cs">
       <DependentUpon>PartTransferItemSearchView.xaml</DependentUpon>
@@ -232,6 +237,7 @@
       <DependentUpon>Logging.Template.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Images\CET_LOGO.png" />
     <Resource Include="Images\Button_2017_Small\Clipboard-Paste.png" />
     <Resource Include="Images\Button_2017_Medium\face.png" />
     <Resource Include="Images\Button_2017_Medium\MeasureSave.png" />

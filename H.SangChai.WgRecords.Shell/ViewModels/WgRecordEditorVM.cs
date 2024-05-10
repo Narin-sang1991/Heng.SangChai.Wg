@@ -5,11 +5,9 @@ using H.SangChai.WgRecords.Shell.Models;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
-using System.Media;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using WPFLocalizeExtension.Extensions;
 
 namespace H.SangChai.WgRecords.Shell.ViewModels
@@ -51,6 +49,30 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
                 rs232Input = value;
                 OnPropertyChanged("ComportName");
                 OnPropertyChanged("RS232Input");
+            }
+        }
+
+        public IList<Tuple<int, string>> ComportNames
+        {
+            get
+            {
+                var results = new List<Tuple<int, string>>();
+                var comportNames = SerialPort.GetPortNames();
+                int i = 0;
+                foreach (var comportName in comportNames)
+                    results.Add(new Tuple<int, string>(i + 1, comportName));
+                return results;
+            }
+        }
+
+        public string ComportName
+        {
+            get { return (RS232Input != null ? RS232Input.PortName.ToUpper() : Container.Resolve<string>("ComportNameInput")); }
+            set
+            {
+                RS232Input.SetComport(value, (IsNotEditing && Id.HasValue));
+                ReConnectAllPort();
+                OnPropertyChanged("ComportName");
             }
         }
 
@@ -152,6 +174,18 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
             OnPropertyChanged("TotalNetWeight");
             OnPropertyChanged("TotalTareWeight");
             OnPropertyChanged("TotalGrossWeight");
+            Reset();
+        }
+
+        protected void NotifyRefresh(object sender, EventArgs args)
+        {
+            System.Windows.Application.Current.Dispatcher.InvokeAsync((Action)(() =>
+            {
+                OnPropertyChanged("TotalNetWeight");
+                OnPropertyChanged("TotalTareWeight");
+                OnPropertyChanged("TotalGrossWeight");
+                Reset();
+            }));
         }
 
         protected void ResponseResult(bool isSaveCompleted)
@@ -176,6 +210,11 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
             RS232Input.ResetWeight();
             if (SaveStateColor != System.ConsoleColor.Yellow.ToString())
                 SaveStateColor = System.ConsoleColor.Yellow.ToString();
+        }
+
+        public override void Dispose()
+        {
+            RS232Input.CloseConnect();
         }
         #endregion 
     }

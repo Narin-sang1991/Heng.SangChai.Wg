@@ -9,13 +9,11 @@ namespace Cet.Hw.Core.SmartClient.Commands
 {
     public class UserManagerCommand : MenuCommand
     {
-        private readonly IUnityContainer container;
         private readonly IRegionManager regionManager;
 
         public UserManagerCommand(IUnityContainer container, IRegionManager regionManager)
             : base(container, MenuResources.UserManager)
         {
-            this.container = container;
             this.regionManager = regionManager;
         }
 

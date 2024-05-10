@@ -41,7 +41,7 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Text="Part Transform Solution" Margin="0,5" FontWeight="ExtraBold"/>
+                <TextBlock Text="HSC Scale Solution" Margin="0,5" FontWeight="ExtraBold"/>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,5">
                     <TextBlock Text="Version : "/>
                     <TextBlock Text="{Binding Version}" Margin="2,0"/>

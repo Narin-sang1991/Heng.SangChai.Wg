@@ -12,13 +12,9 @@ namespace Cet.Hw.Core.SmartClient.Commands
 {
     public class AboutCommand : MenuCommand
     {
-        private readonly IUnityContainer container;
-
         public AboutCommand(IUnityContainer container)
             : base(container, MenuResources.About)
-        {
-            this.container = container;
-        }
+        {  }
 
         public override void Execute(object parameter)
         {

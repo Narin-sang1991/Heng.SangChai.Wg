@@ -11,7 +11,7 @@ namespace Cet.SmartClient.Client
 {
     public class MenuCommand : ICommand
     {
-        private IUnityContainer container;
+        protected IUnityContainer container;
         private Guid guid;
 
         private ObservableCollection<Guid> canExecuteMenuList;

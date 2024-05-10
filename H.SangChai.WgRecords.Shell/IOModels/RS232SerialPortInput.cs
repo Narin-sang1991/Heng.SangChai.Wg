@@ -27,14 +27,14 @@ namespace H.SangChai.WgRecords.Shell.IOModels
             SetComport(confComportName, confStartText, confEndText, confDataStartPoint, confDataLength);
 
             autosaveCouting = 0;
-            minWgAllowSave = Container.Resolve<int>("MinWgAllowAutoSave");
+            minWgAllowSave = Container.Resolve<decimal>("MinWgAllowAutoSave");
             AutoSaveSecLimitCounting = Container.Resolve<int>("AutoSaveLimitCounting");
         }
 
         public event EventHandler WeightAutoSave;
         public event EventHandler WeightZero;
         private int autosaveCouting;
-        private int minWgAllowSave;
+        private decimal minWgAllowSave;
         public int AutoSaveSecLimitCounting { get; set; }
 
         protected override void VerifyWeightChange()
@@ -44,7 +44,7 @@ namespace H.SangChai.WgRecords.Shell.IOModels
                                   || lastestWeight == 0)
                                   )
             {
-                if (autosaveCouting == AutoSaveSecLimitCounting && Weight > minWgAllowSave)
+                if (autosaveCouting >= AutoSaveSecLimitCounting && Weight > minWgAllowSave)
                 {
                     if (WeightAutoSave != null)
                         WeightAutoSave(this, null);

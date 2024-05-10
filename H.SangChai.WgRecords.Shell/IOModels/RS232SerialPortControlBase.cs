@@ -167,11 +167,9 @@ namespace H.SangChai.WgRecords.Shell.IOModels
 
         public void ConnectPort()
         {
-
             readThread = new Thread(Read);
-
-            BaudRate = 9600;
-            Length = 8;
+            BaudRate = 1200;
+            Length = 7;
             ParityValue = 0;
             StopBit = 1;
 
