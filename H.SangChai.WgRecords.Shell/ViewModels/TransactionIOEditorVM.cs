@@ -30,17 +30,17 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
             }
         }
 
-        public bool HasId { get { return Id.HasValue; } }
+        //public bool HasId { get { return Id.HasValue; } }
 
-        private DateTimeOffset? movementDate;
-        public DateTimeOffset? MovementDate
-        {
-            get { return movementDate; }
-            private set
-            {
-                movementDate = value;
-            }
-        }
+        //private DateTimeOffset? movementDate;
+        //public DateTimeOffset? MovementDate
+        //{
+        //    get { return movementDate; }
+        //    private set
+        //    {
+        //        movementDate = value;
+        //    }
+        //}
 
         private decimal defaultTare;
         public decimal DefaultTare

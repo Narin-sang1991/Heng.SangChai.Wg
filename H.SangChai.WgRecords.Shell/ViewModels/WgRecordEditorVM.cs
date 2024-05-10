@@ -22,6 +22,7 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
             RS232Input = Container.Resolve<RS232SerialPortInput>();
             RS232Input.WeightAutoSave += NotifyWeightItemChanged;
 
+            RefreshCommand = new DelegateCommand(Refresh);
             ReConnectAllPortCommand = new DelegateCommand(ReConnectAllPort);
             SaveStateColor = System.ConsoleColor.White.ToString();
 
@@ -37,6 +38,7 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
 
         #region Propertie
         public DelegateCommand ReConnectAllPortCommand { get; set; }
+        public DelegateCommand RefreshCommand { get; set; }
         public DelegateCommand ManualSaveItemCommand { get; set; }
         public DelegateCommand TestSaveItemCommand { get; set; }
 
@@ -202,6 +204,18 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
                     SaveStateColor = System.ConsoleColor.Red.ToString();
                 Reset();
             }
+        }
+
+        public void Refresh()
+        {
+            Reset();
+            ItemSearchVM.ClearResult();
+
+            DefaultTare = 0;
+            OnPropertyChanged("ComportNames");
+            OnPropertyChanged("TotalNetWeight");
+            OnPropertyChanged("TotalTareWeight");
+            OnPropertyChanged("TotalGrossWeight");
         }
 
         public async void Reset()

@@ -237,11 +237,9 @@
       <DependentUpon>Logging.Template.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Images\Button_2017_Small\refresh.png" />
     <Resource Include="Images\CET_LOGO.png" />
     <Resource Include="Images\Button_2017_Small\Clipboard-Paste.png" />
-    <Resource Include="Images\Button_2017_Medium\face.png" />
-    <Resource Include="Images\Button_2017_Medium\MeasureSave.png" />
-    <Resource Include="Images\Button_2017_Medium\report.png" />
     <Resource Include="Images\Button_2017_Small\arrow-down.png" />
     <Resource Include="Images\Button_2017_Small\arrow-up.png" />
     <Resource Include="Images\Button_2017_Small\Cet-Add-Bt.png" />

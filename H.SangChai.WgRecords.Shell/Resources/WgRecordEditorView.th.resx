@@ -154,4 +154,8 @@
     <value>เชื่อมต่อเครื่องชั่งอีกครั้ง</value>
     <comment>Tooltip</comment>
   </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>เริ่มใหม่ และเคลียร์รายการย้อนหลัง</value>
+    <comment>Tooltip</comment>
+  </data>
 </root>

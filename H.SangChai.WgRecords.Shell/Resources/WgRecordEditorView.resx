@@ -154,4 +154,8 @@
     <value>Re-connect digital scal</value>
     <comment>Tooltip</comment>
   </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh and clear history</value>
+    <comment>Tooltip</comment>
+  </data>
 </root>

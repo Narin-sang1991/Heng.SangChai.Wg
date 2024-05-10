@@ -45,14 +45,8 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
 
         internal void CopyWgItemToClipboard(decimal netWeight)
         {
-            //    Thread t = new Thread((ThreadStart)(() =>
-            //    {
             Clipboard.SetText(netWeight.ToString(), TextDataFormat.Text);
             SystemSounds.Beep.Play();
-            //}));
-            //t.SetApartmentState(ApartmentState.STA);
-            //t.Start();
-            //t.Join();
         }
 
         protected override void PrepareDefaultSortingCriteria(SortingCriteria sortingCriteria)
@@ -90,6 +84,11 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
             });
 
             return newId != Guid.Empty;
+        }
+
+        public void ClearResult()
+        {
+            this.SearchResult.Clear();
         }
 
     }

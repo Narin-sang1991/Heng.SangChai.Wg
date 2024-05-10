@@ -33,6 +33,10 @@
                                 <telerik:RadButton Name="ctlRS232" DockPanel.Dock="Top" HorizontalAlignment="Center" Style="{StaticResource RS232ButtonStyle}" 
                                     ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:ReConnect}" Command="{Binding ReConnectAllPortCommand}" />
                                 <telerik:RadButton DockPanel.Dock="Top" RenderTransformOrigin="0.5,0.5" Height="40" Width="40" Style="{StaticResource EditorButtonStyle}"
+                                    ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Refresh}" Command="{ Binding RefreshCommand}">
+                                    <Image Height="30" Width="30" Margin="0" Source="Images/Button_2017_Small/refresh.png" />
+                                </telerik:RadButton>
+                                <telerik:RadButton DockPanel.Dock="Top" RenderTransformOrigin="0.5,0.5" Height="40" Width="40" Style="{StaticResource EditorButtonStyle}"
                                     ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:ManualSave}" Command="{ Binding ManualSaveItemCommand}">
                                     <Image Height="40" Width="40" Margin="0" Source="Images/Button_2017_Small/Clipboard-Paste.png" />
                                 </telerik:RadButton>

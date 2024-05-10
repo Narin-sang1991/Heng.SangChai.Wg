@@ -115,6 +115,15 @@ namespace H.SangChai.WgRecords.Shell.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh and clear history.
+        /// </summary>
+        internal static string Refresh {
+            get {
+                return ResourceManager.GetString("Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scale State.
         /// </summary>
         internal static string ScaleState {
