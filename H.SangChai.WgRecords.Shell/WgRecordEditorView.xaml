@@ -32,7 +32,7 @@
                             <DockPanel Margin="0,10,0,0" >
                                 <telerik:RadButton Name="ctlRS232" DockPanel.Dock="Top" HorizontalAlignment="Center" Style="{StaticResource RS232ButtonStyle}" 
                                     ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:ReConnect}" Command="{Binding ReConnectAllPortCommand}" />
-                                <telerik:RadButton DockPanel.Dock="Top" RenderTransformOrigin="0.5,0.5" Style="{StaticResource EditorButtonStyle}"
+                                <telerik:RadButton DockPanel.Dock="Top" RenderTransformOrigin="0.5,0.5" Height="40" Width="40" Style="{StaticResource EditorButtonStyle}"
                                     ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:ManualSave}" Command="{ Binding ManualSaveItemCommand}">
                                     <Image Height="40" Width="40" Margin="0" Source="Images/Button_2017_Small/Clipboard-Paste.png" />
                                 </telerik:RadButton>
@@ -108,7 +108,7 @@
                             </Grid>
                         </DockPanel>
 
-                        <telerik:GroupBox Name="dspzBrief" Grid.Row="2" Grid.Column="1" Margin="5,0,5,20" Header="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Summary}" 
+                        <telerik:GroupBox Name="dspzBrief" Grid.Row="2" Grid.Column="1" Margin="5,0,5,3" Header="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Summary}" 
                                           Foreground="Maroon" BorderBrush="Maroon" FontSize="14" FontWeight="Bold" >
                             <Grid Margin="0">
                                 <Grid.RowDefinitions>
@@ -137,7 +137,7 @@
                     </Grid>
                 </DockPanel>
                 <ContentControl DockPanel.Dock="Bottom" Style="{StaticResource SearchResultAreaStyle}" IsEnabled="{Binding AllowCommit}"
-                    MinWidth="560" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="5,10,0,0">
+                    MinWidth="560" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="5,0,0,0">
                     <telerik:RadTabControl ItemsSource="{Binding ChildNodes}">
                         <telerik:RadTabControl.Resources>
                             <DataTemplate DataType="{x:Type localVM:PartTransferItemSearchVM}">
