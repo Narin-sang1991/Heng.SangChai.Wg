@@ -26,4 +26,5 @@ namespace H.SangChai.WgRecords.Shell
             InitializeComponent();
         }
     }
+
 }

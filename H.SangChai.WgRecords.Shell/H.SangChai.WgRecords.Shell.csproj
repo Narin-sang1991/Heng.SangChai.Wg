@@ -138,6 +138,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainWindow.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\PartTransferItemSearchView.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartTransferItemSearchView.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\WgRecordEditorView.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WgRecordEditorView.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PartTransferItemSearchVM.cs" />
     <Compile Include="ViewModels\TransactionIOEditorVM.cs" />
@@ -199,6 +209,16 @@
       <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\MainWindow.th.resx" />
+    <EmbeddedResource Include="Resources\PartTransferItemSearchView.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PartTransferItemSearchView.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\PartTransferItemSearchView.th.resx" />
+    <EmbeddedResource Include="Resources\WgRecordEditorView.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WgRecordEditorView.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\WgRecordEditorView.th.resx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\Logging.Template.config">
@@ -212,6 +232,7 @@
       <DependentUpon>Logging.Template.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Images\Button_2017_Small\Clipboard-Paste.png" />
     <Resource Include="Images\Button_2017_Medium\face.png" />
     <Resource Include="Images\Button_2017_Medium\MeasureSave.png" />
     <Resource Include="Images\Button_2017_Medium\report.png" />

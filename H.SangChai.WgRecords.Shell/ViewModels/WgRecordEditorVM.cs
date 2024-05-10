@@ -30,11 +30,16 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
             ItemSearchVM = Container.Resolve<PartTransferItemSearchVM>();
             PrepareChildVMs();
 
+            this.Id = Guid.NewGuid();
+            this.BeginEdit();
+
+            ManualSaveItemCommand = new DelegateCommand(ManualSaveItem);
             TestSaveItemCommand = new DelegateCommand(TestSaveItem);
         }
 
         #region Propertie
         public DelegateCommand ReConnectAllPortCommand { get; set; }
+        public DelegateCommand ManualSaveItemCommand { get; set; }
         public DelegateCommand TestSaveItemCommand { get; set; }
 
         private RS232SerialPortInput rs232Input;
@@ -96,19 +101,22 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
         #region Methods
         public override void PrepareChildVMs()
         {
-            //ItemSearchVM.Header = new LocTextExtension() { Key = "DISPLAY_HEADER", Dict = "PartTransferItemSearchView", Assembly = "H.SangChai.WgRecords.Shell" };
+            ItemSearchVM.Header = new LocTextExtension() { Key = "DISPLAY_HEADER", Dict = "PartTransferItemSearchView", Assembly = "H.SangChai.WgRecords.Shell" };
             AddChildNode(ItemSearchVM);
         }
 
         protected void NotifyWeightItemChanged(object sender, EventArgs args)
         {
-            if (this.Id.HasValue)
-                TriggerItemSearchVM(RS232Input.Weight);
+            if (this.Id.HasValue) TriggerItemSearchVM(RS232Input.Weight);
+        }
+
+        protected void ManualSaveItem()
+        {
+            TriggerItemSearchVM(RS232Input.Weight);
         }
 
         protected void TestSaveItem()
         {
-            //if (this.Id.HasValue)
             TriggerItemSearchVM(85.15m);
         }
 
@@ -169,7 +177,6 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
             if (SaveStateColor != System.ConsoleColor.Yellow.ToString())
                 SaveStateColor = System.ConsoleColor.Yellow.ToString();
         }
-        #endregion
-
+        #endregion 
     }
 }

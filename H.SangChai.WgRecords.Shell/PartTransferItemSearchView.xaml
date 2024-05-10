@@ -14,53 +14,41 @@
         <DockPanel>
             <telerik:RadDataPager x:Name="ctlDataPager" DockPanel.Dock="Bottom" PageSize="{Binding PageSize,Mode=TwoWay}" PageIndex="{Binding PageIndex,Mode=TwoWay}"
              ItemCount="{Binding ItemCount,Mode=TwoWay}" DisplayMode="First, Last, Next, Previous, Text" IsTotalItemCountFixed="True" />
-            <ContentControl DockPanel.Dock="Top" Style="{StaticResource SearchResultAreaStyle}" Margin="3,5,3,3">
+            <ContentControl DockPanel.Dock="Top" Style="{StaticResource SearchResultAreaStyle}" Height="350" Margin="3,5,3,3">
                 <telerik:RadGridView CopyingCellClipboardContent="OnCopyingCellClipboardContent" Name="ctlItemSearchResultGridView" SelectionMode="Extended"
                  CanUserFreezeColumns="False" ItemsSource="{Binding SearchResultCollectionView}" MouseDoubleClick="ctlPartTransferReceiveSearchResultGridView_MouseDoubleClick" 
                   CanUserResizeRows="False" CanUserResizeColumns="True"  CanUserDeleteRows="False" CanUserInsertRows="False"
                  Sorting="OnSortingAsync" SelectionChanged="OnSelectionChanged" Deleting="OnDeleting">
-                    <telerik:RadGridView.Background>
+                    <!--<telerik:RadGridView.Background>
                         <ImageBrush  ImageSource="{Binding ImgBg}" AlignmentX="Right" AlignmentY="Bottom" Stretch="Uniform" />
-                    </telerik:RadGridView.Background>
+                    </telerik:RadGridView.Background>-->
                     <telerik:RadGridView.Columns>
-                        <telerik:GridViewSelectColumn />
+                        <!--<telerik:GridViewSelectColumn />-->
                         <telerik:GridViewDataColumn x:Name="ctlMeasuringId" DataMemberBinding="{Binding Id}" IsVisible="False" />
-                        <telerik:GridViewDataColumn Header="Seq no" DataMemberBinding="{Binding SeqNo}"
-                         TextAlignment="Left" HeaderTextAlignment="Center" SortMemberPath="SeqNo" IsCustomSortingEnabled="True" IsReadOnly="True"
-                         MinWidth="50" />
-                        <telerik:GridViewDataColumn Header="Net Weight" DataMemberBinding="{Binding NetWeight, StringFormat='#,##0.#0'}"
+                        <telerik:GridViewDataColumn Header="{lex:LocText H.SangChai.WgRecords.Shell:PartTransferItemSearchView:SeqNo}" DataMemberBinding="{Binding SeqNo}"
+                         TextAlignment="Center" HeaderTextAlignment="Center" SortMemberPath="SeqNo" IsCustomSortingEnabled="True" IsReadOnly="True"
+                         Width="60" />
+                        <telerik:GridViewDataColumn Header="{lex:LocText H.SangChai.WgRecords.Shell:PartTransferItemSearchView:NetWeight}" DataMemberBinding="{Binding NetWeight, StringFormat='#,##0.#0'}"
                          TextAlignment="Right" HeaderTextAlignment="Center" IsSortable="False" IsReadOnly="True"
                          MinWidth="110" />
-                        <telerik:GridViewDataColumn Header="Tare Weight" DataMemberBinding="{Binding TareWeight, StringFormat='#,##0.#0'}"
+                        <telerik:GridViewDataColumn Header="{lex:LocText H.SangChai.WgRecords.Shell:PartTransferItemSearchView:TareWeight}" DataMemberBinding="{Binding TareWeight, StringFormat='#,##0.#0'}"
                          TextAlignment="Right" HeaderTextAlignment="Center" IsSortable="False" IsReadOnly="True"
                          MinWidth="110" />
-                        <telerik:GridViewDataColumn Header="Time Stamp" DataMemberBinding="{Binding DateTimeStamp, StringFormat='{}{0:dd/MM/yyyy, HH:mm:ss}'}"
+                        <telerik:GridViewDataColumn Header="{lex:LocText H.SangChai.WgRecords.Shell:PartTransferItemSearchView:TimeStamp}" DataMemberBinding="{Binding DateTimeStamp, StringFormat='{}{0:dd-MMM-yyyy, HH:mm:ss}'}"
                          TextAlignment="Left" HeaderTextAlignment="Center" SortMemberPath="DateTimeStamp" IsCustomSortingEnabled="True" IsReadOnly="True"
                          MinWidth="110" />
-                        <!--<telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:ReferenceNo}" DataMemberBinding="{Binding ReferenceNo}"
-                         TextAlignment="Left" HeaderTextAlignment="Center" SortMemberPath="ReferenceNo" IsCustomSortingEnabled="True" IsReadOnly="True"
-                         MinWidth="110" />
-                        --><!--<telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:Supplier}" DataMemberBinding="{Binding BusinessEntityName}"
-                         TextAlignment="Left" HeaderTextAlignment="Center" SortMemberPath="BusinessEntity.FirstName" IsCustomSortingEnabled="True" IsReadOnly="True"
-                         MinWidth="110" />--><!--
-                        <telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:MovementDate}" DataMemberBinding="{Binding Date, StringFormat='{}{0:dd/MM/yyyy, HH:mm:ss}'}"
-                         TextAlignment="Left" HeaderTextAlignment="Center" SortMemberPath="Date" IsCustomSortingEnabled="True" IsReadOnly="True"
-                         MinWidth="110" />
-                        <telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:MovementType}" DataMemberBinding="{Binding TypeDisplay}"
-                         TextAlignment="Center" HeaderTextAlignment="Center" SortMemberPath="TypeValue" IsCustomSortingEnabled="True" IsReadOnly="True"
-                         MinWidth="110" />
-                        <telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:Status}" DataMemberBinding="{Binding StatusDisplay}"
-                         TextAlignment="Center" HeaderTextAlignment="Center" SortMemberPath="StatusValue" IsCustomSortingEnabled="True" IsReadOnly="True"
-                         MinWidth="110" />
-                        <telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:TotalNetWeight}" DataMemberBinding="{Binding ToTalNetWeight, StringFormat='#,##0'}"
-                         TextAlignment="Right" HeaderTextAlignment="Center" IsSortable="False" IsReadOnly="True"
-                         MinWidth="110" />
-                        <telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:TotalTareWeight}" DataMemberBinding="{Binding ToTalTareWeight, StringFormat='#,##0'}"
-                         TextAlignment="Right" HeaderTextAlignment="Center" IsSortable="False" IsReadOnly="True"
-                         MinWidth="110" />
-                        <telerik:GridViewDataColumn Header="{lex:LocText Measuring.SmartClient:PartTransferReceiveSearchView:NoteData}" DataMemberBinding="{Binding Remark}"
-                         TextAlignment="Right" HeaderTextAlignment="Center" SortMemberPath="NoteData" IsCustomSortingEnabled="True" IsReadOnly="True"
-                         MinWidth="110" />-->
+
+                        <telerik:GridViewDataColumn Name="CurrentClipboard" IsSortable="False" DataMemberBinding="{Binding CurrentClipboard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             Width="80" Header="{lex:LocText H.SangChai.WgRecords.Shell:PartTransferItemSearchView:CurrentClipboard}" HeaderTextAlignment="Center" TextAlignment="Center" >
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextAlignment="Center"    Background="{Binding ClipboardColor, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0" Padding="2" >
+                                        <Image Height="20" Width="20" Source="{Binding ImageURL, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+
                     </telerik:RadGridView.Columns>
                 </telerik:RadGridView>
             </ContentControl>

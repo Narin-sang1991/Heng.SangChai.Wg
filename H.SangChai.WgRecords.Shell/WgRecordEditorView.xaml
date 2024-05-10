@@ -28,11 +28,14 @@
                             <ColumnDefinition Width="10*" />
                         </Grid.ColumnDefinitions>
 
-                        <Grid Name="dspzCurentState" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Center">
+                        <Grid Name="dspzCurentState" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
                             <DockPanel Margin="0,10,0,0" >
-                                <telerik:RadButton Name="ctlRS232" DockPanel.Dock="Top" HorizontalAlignment="Center" IsEnabled="{Binding IsNotEditing}" Style="{StaticResource RS232ButtonStyle}" Command="{Binding ReConnectAllPortCommand}" />
-                                <coreClient:CetDataFormButtonGroup DockPanel.Dock="Bottom" HorizontalAlignment="Center" CommandTarget="{Binding ElementName=ctlReceiveEditor}" 
-                                                       StackLayOutButton="Vertical" ShowDeleteButton="Collapsed" ShowNavigationButtons="Collapsed" />
+                                <telerik:RadButton Name="ctlRS232" DockPanel.Dock="Top" HorizontalAlignment="Center" Style="{StaticResource RS232ButtonStyle}" 
+                                    ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:ReConnect}" Command="{Binding ReConnectAllPortCommand}" />
+                                <telerik:RadButton DockPanel.Dock="Top" RenderTransformOrigin="0.5,0.5" Style="{StaticResource EditorButtonStyle}"
+                                    ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:ManualSave}" Command="{ Binding ManualSaveItemCommand}">
+                                    <Image Height="40" Width="40" Margin="0" Source="Images/Button_2017_Small/Clipboard-Paste.png" />
+                                </telerik:RadButton>
                             </DockPanel>
                         </Grid>
                         
@@ -55,9 +58,9 @@
                                                 BorderThickness="2"
                                                 Padding="1"
                                                 Margin="3">
-                                        <telerik:Label DockPanel.Dock="Left" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" VerticalContentAlignment="Center"
+                                        <telerik:Label DockPanel.Dock="Left" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center"
                                                    FontSize="20" FontWeight="ExtraBold" Style="{StaticResource PssLabelStyle}"
-                                                   Content="AUTO WEIGHT CLIPBOARD" />
+                                                   Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Type}" />
                                     </Border>
                                 </DockPanel>
 
@@ -68,13 +71,13 @@
                                     <telerik:Label Margin="0,5,5,0" Padding="1" Style="{StaticResource TitleLabelStyle}"
                                                    ToolTip="{lex:LocText Measuring.SmartClient:PartTransfer_ReceiveEditorView:DocStatus}"
                                                    Content="{Binding StatusDisplay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />-->
-                                    <telerik:RadButton Content="Save Item" Margin="10" Command="{Binding TestSaveItemCommand}"/>
+                                    <!--<telerik:RadButton Content="Save Item" Margin="10" Command="{Binding TestSaveItemCommand}"/>-->
                                 </StackPanel>
                             </DockPanel>
 
                             <telerik:Label Style="{StaticResource InterfaceDisplayStyle}" Foreground="Black" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" HorizontalContentAlignment="Center"
                                                Padding="10,5" Margin="5,10,5,0" Background="{Binding Path=SaveStateColor}"
-                                               ToolTip="Scale State"
+                                               ToolTip="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:ScaleState}"
                                                Content="{Binding RS232Input.ComportStatus}"/>
 
                             <telerik:RadComboBox Name="clrComportNamse" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding ComportNames}" DisplayMemberPath="Item2" SelectedValuePath="Item2" Margin="5,0,5,10"
@@ -86,7 +89,7 @@
                                     HorizontalAlignment="Right" Content="{Binding RS232Input.WeightDisplay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </telerik:DockingPanel>
                             <telerik:Label Style="{StaticResource InterfaceDisplayStyle}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="White" BorderThickness="1"
-                                               Padding="10,5" Margin="7,11,0,0" Background="Black" Content="WEIGHT [Kgs.]"/>
+                                               Padding="10,5" Margin="7,11,0,0" Background="Black" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Weight}"/>
                         </Grid>
                   
                         <DockPanel Name="dspzFixedValues" Grid.Row="1" Grid.Column="1" Background="Silver"  Margin="5,0,10,0">
@@ -99,13 +102,14 @@
                                     <ColumnDefinition Width="2.5*" />
                                     <ColumnDefinition Width="0.5*" />
                                 </Grid.ColumnDefinitions>
-                                <telerik:Label Name="dspDefaultTare" Grid.Row="0" Grid.Column="0" Content="Default Tare" Margin="5" Style="{StaticResource SummaryLabelStyle}"/>
+                                <telerik:Label Name="dspDefaultTare" Grid.Row="0" Grid.Column="0" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:DefaultTare}" Margin="5" Style="{StaticResource SummaryLabelStyle}"/>
                                 <TextBox Name="ctlDefaultTare" Grid.Row="0" Grid.Column="1" Text="{Binding DefaultTare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='#,##0.#0'}" Margin="5" FontSize="22" Foreground="Maroon" FontWeight="UltraBold"/>
-                                <telerik:Label Name="dspKgs" Grid.Row="0" Grid.Column="2" Content="Kgs." Margin="5" Style="{StaticResource SummaryLabelStyle}"/>
+                                <telerik:Label Name="dspKgs" Grid.Row="0" Grid.Column="2" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Unit}" Margin="5" Style="{StaticResource SummaryLabelStyle}"/>
                             </Grid>
                         </DockPanel>
 
-                        <telerik:GroupBox Name="dspzBrief" Grid.Row="2" Grid.Column="1" Margin="5,0,5,20" Header="Summary" Foreground="Maroon" BorderBrush="Maroon" FontSize="14" FontWeight="Bold" >
+                        <telerik:GroupBox Name="dspzBrief" Grid.Row="2" Grid.Column="1" Margin="5,0,5,20" Header="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Summary}" 
+                                          Foreground="Maroon" BorderBrush="Maroon" FontSize="14" FontWeight="Bold" >
                             <Grid Margin="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*" />
@@ -118,14 +122,14 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <telerik:Label Name="dspTotalNet" Grid.Row="0" Grid.Column="0" Content="NET :" Margin="0,5" Style="{StaticResource SummaryLabelStyle}"/>
+                                <telerik:Label Name="dspTotalNet" Grid.Row="0" Grid.Column="0" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Net}" Margin="0,5" Style="{StaticResource SummaryLabelStyle}"/>
                                 <telerik:Label Name="ctlTotalNet" Grid.Row="0" Grid.Column="1" Margin="0,5" Style="{StaticResource PssLabelStyle}" Background="#25a0da"
                                                                                 Content="{Binding TotalNetWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                                <telerik:Label Name="dspTotlaTare" Grid.Row="0" Grid.Column="2" Content="TARE :" Margin="0,5" Style="{StaticResource SummaryLabelStyle}"/>
+                                <telerik:Label Name="dspTotlaTare" Grid.Row="0" Grid.Column="2" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Tare}" Margin="0,5" Style="{StaticResource SummaryLabelStyle}"/>
                                 <telerik:Label Name="ctlTotalTare" Grid.Row="0" Grid.Column="3" Margin="0,5" Style="{StaticResource PssLabelStyle}" Background="#25a0da"
                                                                                 Content="{Binding TotalTareWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                                <telerik:Label Name="dspTotalGross" Grid.Row="1" Grid.Column="0" Content="GROSS :" Margin="0,5" Style="{StaticResource SummaryLabelStyle}"/>
+                                <telerik:Label Name="dspTotalGross" Grid.Row="1" Grid.Column="0" Content="{lex:LocText H.SangChai.WgRecords.Shell:WgRecordEditorView:Gross}" Margin="0,5" Style="{StaticResource SummaryLabelStyle}"/>
                                 <telerik:Label Name="ctlTotalGross" Grid.Row="1" Grid.Column="1" Margin="0,5" Style="{StaticResource PssLabelStyle}" Background="#25a0da"
                                                                                 Content="{Binding TotalGrossWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                             </Grid>

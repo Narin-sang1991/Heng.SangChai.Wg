@@ -11,6 +11,7 @@ using System.ServiceModel;
 using System.Threading;
 using System.Windows;
 using Telerik.Windows.Controls;
+using WPFLocalizeExtension.Extensions;
 
 namespace H.SangChai.WgRecords.Shell
 {
@@ -79,7 +80,7 @@ namespace H.SangChai.WgRecords.Shell
             {
                 var usercontrol = Container.Resolve<WgRecordEditorView>();
                 var viewModel = Container.Resolve<WgRecordEditorVM>();
-                //viewModel.Header = new LocTextExtension() { Key = "HomePage_Title", Dict = "MainWindow", Assembly = "MsatWgRecords.Shell" };
+                viewModel.Header = new LocTextExtension() { Key = "DISPLAY_HEADER", Dict = "WgRecordEditorView", Assembly = "H.SangChai.WgRecords.Shell" };
                 usercontrol.DataContext = viewModel;
                 view = region.AddView(usercontrol, viewName);
             }

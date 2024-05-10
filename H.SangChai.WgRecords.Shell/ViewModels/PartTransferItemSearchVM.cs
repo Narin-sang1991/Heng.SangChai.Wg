@@ -15,7 +15,7 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
         public PartTransferItemSearchVM(IUnityContainer container)
             : base(container)
         {
-            PageSize = 20;
+            PageSize = 10;
             PageIndex = 0;
         }
 
@@ -28,6 +28,18 @@ namespace H.SangChai.WgRecords.Shell.ViewModels
         protected override int CountItemsInternal(object searchCriteria)
         {
             return this.SearchResult.Count();
+        }
+
+        internal void SetCurrentClipboard(MeasuringItemData eventSelected)
+        {
+            var newItems = new List<MeasuringItemData>();
+            foreach (var item in this.SearchResult)
+            {
+                item.CurrentClipboard = (eventSelected.Id == item.Id);
+                newItems.Add(item);
+            }
+            PrepareListViewCollection(newItems);
+            CopyWgItemToClipboard(eventSelected.NetWeight);
         }
 
         internal void CopyWgItemToClipboard(decimal netWeight)

@@ -18,6 +18,24 @@ namespace H.SangChai.WgRecords.Shell.Models
         public long SeqNo { get; set; }
         public DateTime DateTimeStamp { get; set; }
         public bool CurrentClipboard { get; set; }
+        public string ClipboardColor
+        {
+            get
+            {
+                return CurrentClipboard ? "LightGreen" : "Transparent";
+            }
+
+        }
+        public string ImageURL
+        {
+            get
+            {
+                return CurrentClipboard ? "Images/Button_2017_Small/Clipboard-Paste.png" : "";
+            }
+
+        }
+        
+
     }
 
     public class WeightData

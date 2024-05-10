@@ -22,7 +22,7 @@ namespace H.SangChai.WgRecords.Shell
             var eventSelected = ((RadGridView)e.Source).SelectedCells.FirstOrDefault().Item as MeasuringItemData;
             if (eventSelected == null) return;
 
-            vm.CopyWgItemToClipboard(eventSelected.NetWeight);
+            vm.SetCurrentClipboard(eventSelected);
         }
     }
 }
